@@ -1,13 +1,8 @@
 <template>
   <div>
-    <div
-      class="title">
-      감자 코인
-    </div>
     <button
-      class="startButton"
-      type="button"
-      @click="startGame">
+      @click="startGame"
+      class="button">
       게임 시작
     </button>
   </div>
@@ -30,10 +25,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-#main {
-}
-.title {
-}
-.startButton {
-}
+
 </style>
