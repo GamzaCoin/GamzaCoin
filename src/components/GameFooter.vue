@@ -1,6 +1,11 @@
 <template>
   <footer class="game-footer">
-    <button class="sellButton">모든 감자 팔기</button>
+    <div>보유금액 : {{ money }}</div>
+    <div>감자 : {{ numberOfItem }}</div>
+    <button
+      class="sellButton"
+      v-on:click="onClickBtn"
+    >모든 감자 팔기</button>
   </footer>
 </template>
 
@@ -8,8 +13,14 @@
 
 export default {
   name: 'GameFooter',
+  props: ['onClickSellOrBuy', 'numberOfItem', 'money'],
   data () {
     return {
+    }
+  },
+  methods: {
+    onClickBtn: function () {
+      this.$emit('onClickSellOrBuy')
     }
   }
 }

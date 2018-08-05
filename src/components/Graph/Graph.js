@@ -1,5 +1,5 @@
 /* eslint-disable */
-class Graph {
+export default class Graph {
   constructor(levelData) {
     this.levelData = levelData;
     this.maximumChange = levelData.maximumChange;
@@ -11,13 +11,16 @@ class Graph {
 
     this.graphLength = levelData.graphLength;
     this.max_height = 1;
+    this.graphData = [];
+
+    this.mergeFrameAndNoise();
   }
 
   getDifficulty() {
     return 0;
   }
 
-  getGraph() {
+  mergeFrameAndNoise() {
     let graph = [];
     for(let i = 0; i < this.noise.length; i++) {
       let noise = this.noise[i].noise.slice();
@@ -29,9 +32,13 @@ class Graph {
     }
     graph.push(this.frame.framePoint[this.noise.length].y);
 
-    return graph.map((v) => {
+    this.graphData = graph.map((v) => {
       return Math.round(Math.round(v * 1000) / 1000 * this.maximumChange + this.startPrice);
     });
+  }
+
+  getGraph() {
+    return this.graphData;
   }
 }
 

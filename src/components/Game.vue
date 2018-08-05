@@ -1,8 +1,15 @@
 <template>
   <div>
-    <game-header></game-header>
-    <game-body></game-body>
-    <game-footer></game-footer>
+    <game-header />
+    <game-body
+      :graph="this.game.graph.getGraph()"
+      :timeIndex="this.game.timeIndex"
+    />
+    <game-footer
+      v-on:onClickSellOrBuy="onClickSellOrBuy"
+      :numberOfItem="game.numberOfItem"
+      :money="game.money"
+    />
   </div>
 </template>
 
@@ -10,6 +17,9 @@
 import GameHeader from './GameHeader'
 import GameBody from './GameBody'
 import GameFooter from './GameFooter'
+
+import Game from './Game/Game'
+
 export default {
   name: 'Game',
   components: {
@@ -18,7 +28,22 @@ export default {
     'game-footer': GameFooter
   },
   data () {
-    return {}
+    return {
+      game: new Game(1000)
+    }
+  },
+  methods: {
+    onClickSellOrBuy: function (price) {
+      console.log('in onClickSellOrBuy', this.game, price)
+      if (this.game.numberOfItem === 0) {
+        this.game.buy()
+      } else {
+        this.game.sell()
+      }
+    }
+  },
+  mounted: function () {
+    this.game.startGame()
   }
 }
 </script>
