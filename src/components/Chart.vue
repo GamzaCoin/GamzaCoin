@@ -1,16 +1,16 @@
 <template>
-<div class="graph-container">
+  <div class="graph-container">
     <div class="background first"></div>
     <div class="graph">
-        <trend
-            v-bind:data="sample1"
-            v-bind:style="`left: ${setLeft}px`"
-            :gradient="['black']"
-            smooth>
-        </trend>
+      <trend
+        v-bind:data="sample1"
+        v-bind:style="`left: ${setLeft}px`"
+        :gradient="['black']"
+        smooth>
+      </trend>
     </div>
     <div class="background second"></div>
-</div>
+  </div>
 </template>
 
 <script>
@@ -22,63 +22,69 @@ export default {
       sample2: [300, 306, 312, 319, 326, 318, 309, 322, 334, 327, 321, 342, 363, 350, 338, 344, 351, 371, 391, 390, 388, 385, 383, 386, 389, 398, 407, 411, 414, 396, 378, 384, 391, 373, 356, 335, 314, 303, 291, 288, 284, 280, 275, 250, 225, 225, 225, 220, 215, 190, 164, 161, 158, 155, 153, 165, 178, 189, 199, 203, 207, 225, 243, 235, 226, 250, 273, 270, 267, 278, 289, 299, 310, 315, 319, 318, 316, 326, 336, 349, 362],
       intervalID: 0,
       setLeft: 170,
-    }
+    };
   },
   methods: {
-      moveGraph() {
-        setInterval(() => {
-          this.setLeft -= 1;
-        }, 10)
-      }
+    moveGraph () {
+      setInterval(() => {
+        this.setLeft -= 1
+      }, 10)
+    }
   },
-  mounted: function() {
-      this.moveGraph();
+  mounted: function () {
+    this.moveGraph()
   }
 
-}
+};
 </script>
 
 <style>
-.graph-container{
-    position:relative;
-}
-.show-aria{
-    width:375px;
-    height:375px;
-    border:solid 1px black;
-    position:relative;
+  .graph-container {
+    position: relative;
+  }
+
+  .show-aria {
+    width: 375px;
+    height: 375px;
+    border: solid 1px black;
+    position: relative;
     z-index: 900;
-}
-.graph-aria{
-    position:relative;
-    z-index:1000;
-}
-.background{
-    width:375px;
-    height:375px;
+  }
+
+  .graph-aria {
+    position: relative;
+    z-index: 1000;
+  }
+
+  .background {
+    width: 375px;
+    height: 375px;
     background-image: url('../assets/graph-background.png');
     /* background-image: url('../assets/temp.png'); */
     background-size: 375px 375px;
     background-repeat: no-repeat;
-    position:absolute;
-    z-index:500;
-}
-.background.second {
+    position: absolute;
+    z-index: 500;
+  }
+
+  .background.second {
     left: 175px;
     z-index: 800;
-    top:0px;
-}
-.graph{
+    top: 0px;
+  }
+
+  .graph {
     z-index: 600;
     width: 300px;
     height: 375px;
-}
-.graph svg{
+  }
+
+  .graph svg {
     position: absolute;
     /* left: 170px; */
     z-index: 550;
     height: 375px;
-    width:1000px;
-}
+    width: 1000px;
+  }
 
 </style>
