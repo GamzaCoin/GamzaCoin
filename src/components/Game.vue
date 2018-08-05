@@ -1,16 +1,20 @@
 <template>
-    <div>
-        Game Component
-    </div>
+  <div>
+    Game Component
+    <GameBody></GameBody>
+  </div>
 </template>
 
 <script>
+import GameBody from './GameBody'
 
 export default {
   name: 'Game',
   data () {
-    return {
-    }
+    return {}
+  },
+  components: {
+    GameBody: GameBody
   }
 }
 </script>
