@@ -1,5 +1,5 @@
 /* eslint-disable */
-class GraphData {
+class Graph {
   constructor(levelData) {
     this.levelData = levelData;
     this.maximumChange = levelData.maximumChange;
@@ -132,18 +132,3 @@ class Noise {
 function getPointOnTheLine(startPoint, endPoint, x) {
   return Math.round(((endPoint.y - startPoint.y) / (endPoint.x - startPoint.x) * (x - startPoint.x) + startPoint.y) * 1000) /1000;
 }
-
-const level = [
-  {
-    level: 1,
-    startPrice: 300,
-    maximumChange: 200,
-    graphLength: 80,
-    frameDifficultyRange: [10, 15],
-    frameStartDirection: 1,
-    numberOfFramePoints: 4,
-    noiseLength: 2,
-    noiseStrength: 0.1,
-    noiseScoreRange: [0.5, 0.7],
-  }
-];
