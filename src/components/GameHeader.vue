@@ -1,6 +1,6 @@
 <template>
     <div>
-        Game Component
+        Game Header
     </div>
 </template>
 
