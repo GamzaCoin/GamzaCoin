@@ -3,23 +3,23 @@
     <!-- <button class="title" disabled>LV.{{level}} <span class="item-name">감자</span> 10개로 불리기</button> -->
     <div class="gauge">
       <img
-        v-show="integerPercent <= 20"
+        v-show="(price * numberOfItem + money) / goal * 100 <= 20"
         class="apeach" src="./../assets/apeach/apeach1.png" alt="">
       <img
-        v-show="integerPercent > 20 && integerPercent <= 40"
+        v-show="(price * numberOfItem + money) / goal * 100 > 20 && (price * numberOfItem + money) / goal * 100 <= 40"
         class="apeach" src="./../assets/apeach/apeach2.png" alt="">
       <img
-        v-show="integerPercent > 40 && integerPercent <= 60"
+        v-show="(price * numberOfItem + money) / goal * 100 > 40 && (price * numberOfItem + money) / goal * 100 <= 60"
         class="apeach" src="./../assets/apeach/apeach3.png" alt="">
       <img
-        v-show="integerPercent > 60 && integerPercent <= 80"
+        v-show="(price * numberOfItem + money) / goal * 100 > 60 && (price * numberOfItem + money) / goal * 100 <= 80"
         class="apeach" src="./../assets/apeach/apeach4.png" alt="">
       <img
-        v-show="integerPercent > 80"
+        v-show="(price * numberOfItem + money) / goal * 100 > 80"
         class="apeach" src="./../assets/apeach/apeach5.png" alt="">
       <div class="full-percent">
         <div class="percent"><span class="percent-text">
-          {{ integerPercent }}
+          {{ (price * numberOfItem + money) / goal * 100 | integerlize }}
           </span>
         </div>
       </div>
@@ -44,6 +44,12 @@ export default {
   computed: {
     integerPercent () {
       return Math.floor((this.price_ * this.numberOfItem_ + this.money_) / this.goal_ * 100)
+    }
+  },
+  filters: {
+    integerlize (value) {
+      let percent = Math.floor(value)
+      return percent
     }
   }
 }
