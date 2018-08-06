@@ -1,6 +1,7 @@
 <template>
   <div class="game">
     <div class="ready" v-show="isReadyShow">
+      <div class="goal">{{game.goalDesc}}</div>
       <div class="count" v-show="delay != 0">{{ delay }}</div>
       <div class="start" v-show="delay == 0">START</div>
     </div>
@@ -60,7 +61,7 @@ export default {
         this.game.sell()
       }
     },
-    startGame () {
+    readyAndStartGame () {
       setInterval(() => {
         this.delay -= 1
         console.log(this.delay)
@@ -74,7 +75,7 @@ export default {
   created: function () {
     this.$EventBus.$on('playGame', () => {
       this.isReadyShow = true
-      this.startGame()
+      this.readyAndStartGame()
     })
   }
 }

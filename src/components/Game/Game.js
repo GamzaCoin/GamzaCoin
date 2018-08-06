@@ -5,6 +5,8 @@ import {levelData} from '../../game-config/levelData'
 export default class Game {
   constructor(level) {
     this.level = level;
+    this.goal = levelData[level - 1].goal;
+    this.goalDesc = levelData[level - 1].goalDesc;
     this.money = levelData[level - 1].startMoney;
     this.numberOfItem = 0;
     this.timeIndex = 0;
@@ -33,24 +35,29 @@ export default class Game {
   }
 
   sell() {
+    if(this.gameStatus !== 'play')
+      return;
     if(!this.numberOfItem)
       return;
-    let price = this.graph.graphData[this.timeIndex + 1];
+    let price = this.graph.graphData[this.timeIndex + 1] || this.graph.graphData[this.timeIndex];
     this.money = Math.round(this.numberOfItem * price);
     this.numberOfItem = 0;
     this.history.push({type: 'sell', timeIndex: this.timeIndex, price: price, numberOfItem: this.numberOfItem, money: this.money})
   }
 
   buy() {
+    if(this.gameStatus !== 'play')
+      return;
     if(!this.money)
       return;
-    let price = this.graph.graphData[this.timeIndex + 1];
+    let price = this.graph.graphData[this.timeIndex + 1] || this.graph.graphData[this.timeIndex];
     this.numberOfItem = Math.round(this.money / price * 10) / 10;
     this.money = 0;
     this.history.push({type: 'buy', timeIndex: this.timeIndex, price: price, numberOfItem: this.numberOfItem, money: this.money})
   }
 
   startGame() {
+    this.gameStatus = 'play';
     this.interval = setInterval(() => {
       if(this.timeIndex >= this.graph.graphLength) {
         this.gameOver();
