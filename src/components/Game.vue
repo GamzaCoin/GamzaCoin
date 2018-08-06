@@ -61,18 +61,12 @@ export default {
         console.log(this.delay)
         if (this.delay === -1) {
           this.game.startGame()
+          // clearInterval(this.startGame)
         }
       }, 1000)
     }
   },
   mounted () {
-    // setInterval(() => {
-    //   this.delay -= 1
-    //   console.log(this.delay)
-    //   if (this.delay === 0) {
-    //     this.game.startGame()
-    //   }
-    // }, 1000)
     this.startGame()
   }
 }
