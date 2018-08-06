@@ -12,6 +12,7 @@
       :graph="game.graph.getGraph()"
       :timeIndex="game.timeIndex"
       :graphLength="game.graph.graphLength"
+      :itemImg="game.itemImg"
     />
     <game-footer
       v-on:onClickSellOrBuy="onClickSellOrBuy"
@@ -47,7 +48,7 @@ export default {
   data () {
     return {
       level: 1,
-      game: new Game(2),
+      game: new Game(3),
       isReadyShow: false,
       delay: 3
     }
@@ -92,7 +93,7 @@ game-footer {
 .ready {
   position: fixed;
   height: 100vh;
-  background-color: rgb(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.7);
   z-index: 99999;
   width: 100%;
 }

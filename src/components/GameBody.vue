@@ -19,7 +19,7 @@
           </trend>
         </div>
       </div>
-      <div class="item"><img src="../assets/gamza.png"/></div>
+      <div class="item"><img :src="getImgUrl(itemImg)" :class="{spin: timeIndex > 0}"/></div>
     </div>
   </div>
 </template>
@@ -27,15 +27,18 @@
 <script>
 export default {
   name: 'GameBody',
-  props: ['graph', 'graphLength', 'timeIndex'],
+  props: ['graph', 'graphLength', 'timeIndex', 'itemImg'],
   data () {
     return {
       graphData: this.graph,
       graphHeight: 800,
       intervalID: 0,
-      x: 0,
-      y: 0,
-      distanceUnit: 15
+      distanceUnit: 30
+    }
+  },
+  methods: {
+    getImgUrl (img) {
+      return require('../assets/' + img)
     }
   },
   computed: {
@@ -112,6 +115,22 @@ export default {
   .item img {
     width: 100%;
     height: 100%;
+  }
+
+  .spin {
+    animation-name: spin;
+    animation-duration: 2000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+
+  @keyframes spin {
+    from {
+      transform:rotate(0deg);
+    }
+    to {
+      transform:rotate(360deg);
+    }
   }
 
 </style>

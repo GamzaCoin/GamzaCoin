@@ -7,6 +7,8 @@ export default class Game {
     this.level = level;
     this.goal = levelData[level - 1].goal;
     this.goalDesc = levelData[level - 1].goalDesc;
+    this.itemName = levelData[level - 1].itemName;
+    this.itemImg = levelData[level - 1].itemImg;
     this.money = levelData[level - 1].startMoney;
     this.numberOfItem = 0;
     this.timeIndex = 0;
