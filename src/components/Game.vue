@@ -1,5 +1,9 @@
 <template>
   <div class="game">
+    <div class="ready" v-show="delay >= 0">
+      <div class="count" v-show="delay != 0">{{ delay }}</div>
+      <div class="start" v-show="delay == 0">START</div>
+    </div>
     <game-header />
     <game-body
       :graph="game.graph.getGraph()"
@@ -35,7 +39,8 @@ export default {
   },
   data () {
     return {
-      game: new Game(1000)
+      game: new Game(1000),
+      delay: 3
     }
   },
   methods: {
@@ -46,10 +51,26 @@ export default {
       } else {
         this.game.sell()
       }
+    },
+    startGame () {
+      setInterval(() => {
+        this.delay -= 1
+        console.log(this.delay)
+        if (this.delay === -1) {
+          this.game.startGame()
+        }
+      }, 1000)
     }
   },
-  mounted: function () {
-    this.game.startGame()
+  mounted () {
+    // setInterval(() => {
+    //   this.delay -= 1
+    //   console.log(this.delay)
+    //   if (this.delay === 0) {
+    //     this.game.startGame()
+    //   }
+    // }, 1000)
+    this.startGame()
   }
 }
 </script>
@@ -59,5 +80,28 @@ export default {
 
 game-footer {
   position: fixed;
+}
+
+.ready {
+  position: fixed;
+  height: 100vh;
+  background-color: black;
+  z-index: 99999;
+  width: 100%;
+}
+
+.count {
+  color: white;
+  font-size: 100px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.start {
+  color: black;
+  font-size: 100px;
+  text-shadow: -2px 0 #efcf00, 0 2px #efcf00, 2px 0 #efcf00, 0 -2px #efcf00;
+  width: 100%;
+  margin: 0 auto;
 }
 </style>
