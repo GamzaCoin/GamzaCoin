@@ -7,6 +7,9 @@
     </div>
     <game-header
       :goal="game.goal"
+      :numberOfItem="game.numberOfItem"
+      :money="game.money"
+      :price="this.price"
     />
     <game-body
       :graph="game.graph.getGraph()"
@@ -49,7 +52,8 @@ export default {
       level: 1,
       game: new Game(1),
       isReadyShow: false,
-      delay: 3
+      delay: 3,
+      price: 0
     }
   },
   methods: {
@@ -60,11 +64,12 @@ export default {
       } else {
         this.game.sell()
       }
+      this.price = this.game.history[this.game.history.length - 1].price
     },
     readyAndStartGame () {
       setInterval(() => {
         this.delay -= 1
-        console.log(this.delay)
+        // console.log(this.delay)
         if (this.delay === -1) {
           this.isReadyShow = false
           this.game.startGame()
