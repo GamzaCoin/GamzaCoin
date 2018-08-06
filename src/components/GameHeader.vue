@@ -2,10 +2,26 @@
   <header class="game-header">
     <!-- <button class="title" disabled>LV.{{level}} <span class="item-name">감자</span> 10개로 불리기</button> -->
     <div class="gauge">
-      <img class="apeach" src="./../assets/apeach/apeach1.png" alt="">
-      <!-- <div class="peach-face"></div> -->
+      <img
+        v-show="(price * numberOfItem + money) / goal * 100 <= 20"
+        class="apeach" src="./../assets/apeach/apeach1.png" alt="">
+      <img
+        v-show="(price * numberOfItem + money) / goal * 100 > 20 && (price * numberOfItem + money) / goal * 100 <= 40"
+        class="apeach" src="./../assets/apeach/apeach2.png" alt="">
+      <img
+        v-show="(price * numberOfItem + money) / goal * 100 > 40 && (price * numberOfItem + money) / goal * 100 <= 60"
+        class="apeach" src="./../assets/apeach/apeach3.png" alt="">
+      <img
+        v-show="(price * numberOfItem + money) / goal * 100 > 60 && (price * numberOfItem + money) / goal * 100 <= 80"
+        class="apeach" src="./../assets/apeach/apeach4.png" alt="">
+      <img
+        v-show="(price * numberOfItem + money) / goal * 100 > 80"
+        class="apeach" src="./../assets/apeach/apeach5.png" alt="">
       <div class="full-percent">
-        <div class="percent"><span class="percent-text">65%</span></div>
+        <div class="percent"><span class="percent-text">
+          {{ (price * numberOfItem + money) / goal * 100 | integerlize }}
+          </span>
+        </div>
       </div>
     </div>
   </header>
@@ -15,9 +31,25 @@
 
 export default {
   name: 'GameHeader',
-  props: ['level', 'goal', 'goalDesc'],
+  props: ['level', 'goal', 'goalDesc', 'numberOfItem', 'money', 'price'],
   data () {
     return {
+      goal_: this.goal,
+      numberOfItem_: this.numberOfItem,
+      money_: this.money,
+      price_: this.price,
+      percent: 0
+    }
+  },
+  computed: {
+    integerPercent () {
+      return Math.floor((this.price_ * this.numberOfItem_ + this.money_) / this.goal_ * 100)
+    }
+  },
+  filters: {
+    integerlize (value) {
+      let percent = Math.floor(value)
+      return percent
     }
   }
 }
@@ -51,7 +83,7 @@ export default {
 .apeach {
   top: 50%;
   left: 50%;
-  position:absolute;
+  /* position:absolute; */
   width: 50%;
   padding: 2%;
   border: 3px solid #b29874;
@@ -65,12 +97,30 @@ export default {
   border: 1px solid grey;
   background-color: grey;
   border-radius: 20px;
-  width: 100%;
+  width: 200%;
   padding: 3%;
   top: 30%;
   left: 50%;
+  z-index:-1;
 }
 
+@media (max-width: 400px) and (min-width: 376px) {
+  .full-percent {
+    width: 160%;
+  }
+}
+
+@media (max-width: 376px) and (min-width: 350px) {
+  .full-percent {
+    width: 170%;
+  }
+}
+
+@media (max-width: 349px) and (min-width: 320px) {
+  .full-percent {
+    width: 140%;
+  }
+}
 .percent {
   border: 1px solid #ffc300;
   background-color: #ffc300;
