@@ -65,7 +65,7 @@ export default{
     margin: 15% auto 0 auto;
   }
   .score-board-container{
-    background-color: rgb(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.7);
     position: fixed;
     width: 100%;
     height: 100%;

@@ -23,10 +23,9 @@
       :money="game.money"
     />
     <game-score-board
-      :show="game.gameStatus === 'gameover'"
+      v-show="game.gameStatus === 'gameover'"
     />
     <game-guide/>
-    <game-over/>
   </div>
 </template>
 
