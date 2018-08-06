@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="game">
     <game-header />
     <game-body
       :graph="this.game.graph.getGraph()"
@@ -56,4 +56,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
+game-footer {
+  position: fixed;
+}
 </style>

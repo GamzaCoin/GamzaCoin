@@ -75,8 +75,7 @@ export default {
   .background {
     width: 375px;
     height: 100%;
-    background-image: url('../assets/graph-background.png');
-    /* background-image: url('../assets/temp.png'); */
+    background-image: url('../assets/bgimage.png');
     background-size: 375px 375px;
     background-repeat: no-repeat;
     position: absolute;
