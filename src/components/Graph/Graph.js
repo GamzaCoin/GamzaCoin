@@ -74,13 +74,35 @@ class Frame {
   initFramePointY() {
     let tempHeight = new Array(this.numberOfPoints).fill(0);
     let difficulty;
-
     do {
       difficulty = 0;
-      for (let i = 1; i < this.numberOfPoints; i++) {
-        tempHeight[i] = this.startDirection * Math.pow(-1, i + 1) * Math.round(Math.random() * 100) / 100;
+      let i = 1;
+      while(i < this.numberOfPoints) {
+        tempHeight[i] = Math.round((Math.random() * 2 - 1) * 100) / 100;
+        if(this.startDirection * Math.pow(-1, i + 1) * (tempHeight[i] - tempHeight[i - 1]) < 0.15)
+          continue;
         difficulty += (this.framePoint[i].x - this.framePoint[i - 1].x) * (tempHeight[i] - tempHeight[i - 1]);
+        i++;
       }
+      /*
+      for(i = 0; i < 20; i++) {
+        if (difficulty < this.difficultyRange[0]) {
+          tempHeight.map((x, i) => {
+            if (i === 0 || (this.startDirection > 0 && i % 2 === 1) || (this.startDirection < 0 && i % 2 === 0))
+              return x;
+            return x + 0.01
+          });
+        } else if (this.difficultyRange[1] < difficulty) {
+          tempHeight.map((x, i) => {
+            if (i === 0 || (this.startDirection > 0 && i % 2 === 1) || (this.startDirection < 0 && i % 2 === 0))
+              return x;
+            return x + 0.01
+          });
+        } else {
+          break;
+        }
+      }
+      */
     } while(difficulty < this.difficultyRange[0] || this.difficultyRange[1] < difficulty);
 
     for(let i in tempHeight)
