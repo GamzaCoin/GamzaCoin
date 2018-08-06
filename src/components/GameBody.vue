@@ -11,6 +11,7 @@
             :padding="0"
             :height="500"
             :width="1000"
+            :radius="1000"
             smooth>
           </trend>
         </div>

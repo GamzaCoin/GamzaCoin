@@ -11,6 +11,8 @@ export default class Game {
     this.timeUnit = 500;
     this.interval = null;
     this.graph = new Graph(level[this.level - 1].GraphData)
+    this.history = [];
+    this.gameStatus = 'ready';
   }
 
   sellAt(price) {
@@ -33,24 +35,25 @@ export default class Game {
   sell() {
     if(!this.numberOfItem)
       return;
-    console.log(this.numberOfItem, this.graph, this.numberOfItem * this.graph.graphData[this.timeIndex]);
-    this.money = Math.round(this.numberOfItem * this.graph.graphData[this.timeIndex + 1]);
+    let price = this.graph.graphData[this.timeIndex + 1];
+    this.money = Math.round(this.numberOfItem * price);
     this.numberOfItem = 0;
+    this.history.push({type: 'sell', timeIndex: this.timeIndex, price: price, numberOfItem: this.numberOfItem, money: this.money})
   }
 
   buy() {
     if(!this.money)
       return;
-    console.log(this.numberOfItem, this.graph.graphData[this.timeIndex], this.numberOfItem * this.graph.graphData[this.timeIndex]);
-
-    this.numberOfItem = Math.round(this.money / this.graph.graphData[this.timeIndex + 1] * 10) / 10;
+    let price = this.graph.graphData[this.timeIndex + 1];
+    this.numberOfItem = Math.round(this.money / price * 10) / 10;
     this.money = 0;
+    this.history.push({type: 'buy', timeIndex: this.timeIndex, price: price, numberOfItem: this.numberOfItem, money: this.money})
   }
 
   startGame() {
     this.interval = setInterval(() => {
       if(this.timeIndex >= this.graph.graphLength) {
-        this.stopGame();
+        this.gameOver();
         return;
       }
       this.timeIndex++;
@@ -59,5 +62,14 @@ export default class Game {
 
   stopGame() {
     clearInterval(this.interval);
+  }
+
+  gameOver() {
+    this.stopGame();
+    this.showScoreBoard();
+  }
+
+  showScoreBoard() {
+    this.gameStatus = 'gameover';
   }
 }

@@ -10,6 +10,9 @@
       :numberOfItem="game.numberOfItem"
       :money="game.money"
     />
+    <game-score-board
+      :show="game.gameStatus === 'gameover'"
+    />
   </div>
 </template>
 
@@ -17,6 +20,7 @@
 import GameHeader from './GameHeader'
 import GameBody from './GameBody'
 import GameFooter from './GameFooter'
+import GameScoreBoard from './GameScoreBoard'
 
 import Game from './Game/Game'
 
@@ -25,7 +29,8 @@ export default {
   components: {
     'game-header': GameHeader,
     'game-body': GameBody,
-    'game-footer': GameFooter
+    'game-footer': GameFooter,
+    'game-score-board': GameScoreBoard
   },
   data () {
     return {

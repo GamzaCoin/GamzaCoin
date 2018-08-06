@@ -5,14 +5,14 @@ export const level = [
     startMoney: 1000,
     GraphData: {
       startPrice: 300,
-      maximumChange: 200,
+      maximumChange: 100,
       graphLength: 80,
-      frameDifficultyRange: [10, 15],
+      frameDifficultyRange: [12, 15],
       frameStartDirection: 1,
       numberOfFramePoints: 4,
       noiseLength: 2,
-      noiseStrength: 0.1,
-      noiseScoreRange: [0.5, 0.7],
+      noiseStrength: 0.2,
+      noiseScoreRange: [0.8, 1.0],
     }
   }
 ];

@@ -103,11 +103,11 @@ export default {
     /*width: 1000px;*/
     height: 100%;
     width: 100%;
-    -webkit-transition: transform 0.5s linear;
-    -moz-transition: transform 0.5s ease;
-    -ms-transition: transform 0.5s ease;
-    -o-transition: transform 0.5s ease;
-    transition: transform 0.5s linear;
+    -webkit-transition: transform 0.5s cubic-bezier(0.65, 0.45, 0.45, 0.65);
+    -moz-transition: transform 0.5s cubic-bezier(0.65, 0.45, 0.45, 0.65);
+    -ms-transition: transform 0.5s cubic-bezier(0.65, 0.45, 0.45, 0.65);
+    -o-transition: transform 0.5s cubic-bezier(0.65, 0.45, 0.45, 0.65);
+    transition: transform 0.5s cubic-bezier(0.65, 0.45, 0.45, 0.65);
   }
 
 </style>
