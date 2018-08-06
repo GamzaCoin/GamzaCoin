@@ -7,6 +7,8 @@ import Trend from 'vuetrend'
 
 Vue.config.productionTip = false
 Vue.use(Trend)
+Vue.prototype.$EventBus = new Vue()
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
