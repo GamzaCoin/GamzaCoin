@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="game">
     <game-header />
     <game-body
       :graph="this.game.graph.getGraph()"
@@ -17,7 +17,6 @@
 import GameHeader from './GameHeader'
 import GameBody from './GameBody'
 import GameFooter from './GameFooter'
-
 import Game from './Game/Game'
 
 export default {
@@ -51,4 +50,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
+game-footer {
+  position: fixed;
+}
 </style>

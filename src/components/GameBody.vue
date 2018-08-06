@@ -56,7 +56,7 @@ export default {
 
 <style>
   .game-body {
-    height: 55vh;
+    height: 100vh;
     width: 100%;
     overflow: hidden;
   }
@@ -81,7 +81,7 @@ export default {
   .background {
     width: 375px;
     height: 100%;
-    background-image: url('../assets/graph-background.png');
+    background-image: url('../assets/bgimage.png');
     /* background-image: url('../assets/temp.png'); */
     background-size: 375px 375px;
     background-repeat: no-repeat;
