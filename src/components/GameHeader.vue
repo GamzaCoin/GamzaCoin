@@ -1,6 +1,13 @@
 <template>
   <header class="game-header">
-    <button class="title" disabled>LV.{{level}} <span class="item-name">감자</span> 10개로 불리기</button>
+    <!-- <button class="title" disabled>LV.{{level}} <span class="item-name">감자</span> 10개로 불리기</button> -->
+    <div class="gauge">
+      <img class="apeach" src="./../assets/apeach/apeach1.png" alt="">
+      <!-- <div class="peach-face"></div> -->
+      <div class="full-percent">
+        <div class="percent"><span class="percent-text">65%</span></div>
+      </div>
+    </div>
   </header>
 </template>
 
@@ -39,5 +46,35 @@ export default {
   font-weight: 600;
   width: 80%;
   padding: 1.5%;
+}
+
+.apeach {
+  top: 50%;
+  left: 50%;
+  position:absolute;
+  width: 50%;
+  padding: 2%;
+  border: 3px solid #b29874;
+  background-color: #b29874;
+  border-radius: 50px;
+  z-index: 10000;
+}
+
+.full-percent {
+  position: absolute;
+  border: 1px solid grey;
+  background-color: grey;
+  border-radius: 20px;
+  width: 100%;
+  padding: 3%;
+  top: 30%;
+  left: 50%;
+}
+
+.percent {
+  border: 1px solid #ffc300;
+  background-color: #ffc300;
+  border-radius: 20px;
+  width: 60%;
 }
 </style>

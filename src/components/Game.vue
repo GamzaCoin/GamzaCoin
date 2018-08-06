@@ -68,6 +68,7 @@ export default {
         if (this.delay === -1) {
           this.isReadyShow = false
           this.game.startGame()
+          // clearInterval(this.startGame)
         }
       }, 1000)
     }
