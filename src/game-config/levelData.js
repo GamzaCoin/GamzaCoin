@@ -9,7 +9,7 @@ export const levelData = [
       graphLength: 80,
       frameDifficultyRange: [16, 20],
       frameStartDirection: 1,
-      numberOfFramePoints: 4,
+      numberOfFramePoints: 5,
       noiseLength: 1,
       noiseStrength: 0.2,
       noiseScoreRange: [1.0, 1.5],
