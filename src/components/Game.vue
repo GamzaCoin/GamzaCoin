@@ -2,8 +2,9 @@
   <div class="game">
     <game-header />
     <game-body
-      :graph="this.game.graph.getGraph()"
-      :timeIndex="this.game.timeIndex"
+      :graph="game.graph.getGraph()"
+      :timeIndex="game.timeIndex"
+      :graphLength="game.graph.graphLength"
     />
     <game-footer
       v-on:onClickSellOrBuy="onClickSellOrBuy"
