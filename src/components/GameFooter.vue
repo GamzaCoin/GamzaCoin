@@ -2,14 +2,22 @@
   <footer class="game-footer">
     <div class="game-info">
       <img class="money-img" src="./../assets/money.png" alt="">
-      <span class="money">{{ money }}</span><br>
+      <span class="money">{{ money }}</span>
+      <div></div>
       <img class="item-img" src="./../assets/gamza.png" alt="">
       <span class="item">{{ numberOfItem }}</span>
     </div>
     <button
+      v-if="money==0"
       class="sellButton"
       @click="onClickBtn">
-      모든 감자 팔기
+      <span>모든 감자 팔기</span>
+    </button>
+    <button
+      v-if="numberOfItem==0"
+      class="buyButton"
+      @click="onClickBtn">
+      <span>모든 감자 사기</span>
     </button>
   </footer>
 </template>
@@ -42,9 +50,10 @@ export default {
 
 .game-info {
   position: fixed;
-  left: 8%;
+  left: 5%;
   bottom: 0%;
   text-align: left;
+  z-index: 1000;
 }
 
 .money-img, .item-img {
@@ -58,26 +67,28 @@ export default {
   color: white;
   text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
   margin-top: 2%;
+  width: 20%;
+  text-align: right;
 }
 
-.item {
-  left: 22%;
-}
-
-.sellButton {
+.sellButton, .buyButton {
   position: fixed;
   bottom: 3.5%;
-  left: 42%;
+  left: 45%;
   background: #ff686e;
   color: #ffffff;
   text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
   border: 3px solid black;
   border-radius: 20px;
-  font-size: 150%;
+  font-size: 120%;
   font-weight: 600;
   width: 50%;
   padding: 1.5%;
   z-index: 1000;
-  /* cursor: pointer; */
+  cursor: pointer;
+}
+
+.buyButton {
+  background: #f7931e;
 }
 </style>

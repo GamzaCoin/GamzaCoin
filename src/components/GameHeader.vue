@@ -1,6 +1,6 @@
 <template>
   <header class="game-header">
-    <button class="titleButton">LV.1 <span class="item-name">감자</span> 10개로 불리기</button>
+    <button class="title" disabled>LV.1 <span class="item-name">감자</span> 10개로 불리기</button>
   </header>
 </template>
 
@@ -25,7 +25,7 @@ export default {
 .item-name {
   color: #f7931e;
 }
-.titleButton {
+.title {
   position: fixed;
   top: 2%;
   left: 10%;
@@ -34,7 +34,7 @@ export default {
   text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
   border: 3px solid black;
   border-radius: 20px;
-  font-size: 200%;
+  font-size: 150%;
   font-weight: 600;
   width: 80%;
   padding: 1.5%;
