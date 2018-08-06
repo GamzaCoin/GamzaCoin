@@ -43,7 +43,7 @@ export default {
   data () {
     return {
       level: 1,
-      game: new Game(1),
+      game: new Game(2),
       delay: 3
     }
   },
