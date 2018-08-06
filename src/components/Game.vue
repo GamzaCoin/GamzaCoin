@@ -21,8 +21,8 @@
     <game-score-board
       :show="game.gameStatus === 'gameover'"
     />
-    <game-guide
-      />
+    <game-guide/>
+    <game-over/>
   </div>
 </template>
 
@@ -32,6 +32,7 @@ import GameBody from './GameBody'
 import GameFooter from './GameFooter'
 import GameScoreBoard from './GameScoreBoard'
 import GameGuide from './GameGuide'
+import GameOver from './GameOver'
 
 import Game from './Game/Game'
 
@@ -42,7 +43,8 @@ export default {
     'game-body': GameBody,
     'game-footer': GameFooter,
     'game-score-board': GameScoreBoard,
-    'game-guide': GameGuide
+    'game-guide': GameGuide,
+    'game-over': GameOver
   },
   data () {
     return {
