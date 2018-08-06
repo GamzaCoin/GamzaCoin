@@ -2,7 +2,7 @@
   <div class="game-body">
     <div class="graph-container">
       <div class="background"
-           v-bind:style="{ width: `calc(100% + ${distanceUnit * (graphLength - 1) / 2 }px)`, transform: `translate(${-1 * distanceUnit * timeIndex / 2}px, ${graphData[timeIndex] - 300}px)`}"></div>
+           v-bind:style="{ width: `calc(100% + ${distanceUnit * (graphLength - 1) / 2 + 100}px)`, transform: `translate(${-1 * distanceUnit * timeIndex / 2}px, ${graphData[timeIndex] - 300}px)`}"></div>
       <div class="graph-wrapper">
         <div class="graph"
              v-bind:style="`transform: translate(${-1 * distanceUnit * timeIndex}px, ${(graphData[timeIndex] - 300) * 2}px)`">
