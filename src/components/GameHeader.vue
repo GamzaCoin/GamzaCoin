@@ -8,6 +8,7 @@
 
 export default {
   name: 'GameHeader',
+  props: ['goal', 'goalDesc'],
   data () {
     return {
     }

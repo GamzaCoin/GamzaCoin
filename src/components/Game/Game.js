@@ -1,16 +1,16 @@
 import Graph from '../Graph/Graph'
-import {level} from '../../game-config/levelData'
+import {levelData} from '../../game-config/levelData'
 
 /* eslint-disable */
 export default class Game {
-  constructor(startMoney) {
-    this.level = 1;
-    this.money = startMoney;
+  constructor(level) {
+    this.level = level;
+    this.money = levelData[level - 1].startMoney;
     this.numberOfItem = 0;
     this.timeIndex = 0;
     this.timeUnit = 500;
     this.interval = null;
-    this.graph = new Graph(level[this.level - 1].GraphData)
+    this.graph = new Graph(levelData[level - 1].GraphData);
     this.history = [];
     this.gameStatus = 'ready';
   }

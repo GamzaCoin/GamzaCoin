@@ -1,6 +1,9 @@
 <template>
   <div class="game">
-    <game-header />
+    <game-header
+      :goal="game.goal"
+      :goalDesc="game.goalDesc"
+    />
     <game-body
       :graph="game.graph.getGraph()"
       :timeIndex="game.timeIndex"
@@ -35,7 +38,7 @@ export default {
   },
   data () {
     return {
-      game: new Game(1000)
+      game: new Game(1)
     }
   },
   methods: {
