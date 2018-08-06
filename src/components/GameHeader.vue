@@ -1,6 +1,6 @@
 <template>
   <header class="game-header">
-    <button class="title" disabled>LV.1 <span class="item-name">감자</span> 10개로 불리기</button>
+    <button class="title" disabled>LV.{{level}} <span class="item-name">감자</span> 10개로 불리기</button>
   </header>
 </template>
 
@@ -8,7 +8,7 @@
 
 export default {
   name: 'GameHeader',
-  props: ['goal', 'goalDesc'],
+  props: ['level', 'goal', 'goalDesc'],
   data () {
     return {
     }

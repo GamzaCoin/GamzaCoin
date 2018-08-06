@@ -7,7 +7,7 @@ export const levelData = [
       startPrice: 300,
       maximumChange: 100,
       graphLength: 80,
-      frameDifficultyRange: [14, 16],
+      frameDifficultyRange: [13, 16],
       frameStartDirection: 1,
       numberOfFramePoints: 4,
       noiseLength: 2,
@@ -38,7 +38,7 @@ export const levelData = [
     goal: 3000,
   }, {
     level: 3,
-    startMoney: 1000,
+    startMoney: 2000,
     GraphData: {
       startPrice: 400,
       maximumChange: 100,
@@ -53,6 +53,6 @@ export const levelData = [
     itemName: '브로콜리',
     itemImg: 'brocoli.png',
     goalDesc: "브로콜리를 팔아서, 1,800원을 만드세요!",
-    goal: 1800,
+    goal: 4000,
   },
 ];
