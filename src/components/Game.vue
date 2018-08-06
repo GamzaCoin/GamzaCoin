@@ -1,6 +1,7 @@
 <template>
   <div class="game">
     <div class="ready" v-show="delay >= 0">
+      <div class="goal">{{game.goalDesc}}</div>
       <div class="count" v-show="delay != 0">{{ delay }}</div>
       <div class="start" v-show="delay == 0">START</div>
     </div>
@@ -55,7 +56,7 @@ export default {
         this.game.sell()
       }
     },
-    startGame () {
+    readyAndStartGame () {
       setInterval(() => {
         this.delay -= 1
         console.log(this.delay)
@@ -66,14 +67,7 @@ export default {
     }
   },
   mounted () {
-    // setInterval(() => {
-    //   this.delay -= 1
-    //   console.log(this.delay)
-    //   if (this.delay === 0) {
-    //     this.game.startGame()
-    //   }
-    // }, 1000)
-    this.startGame()
+    this.readyAndStartGame()
   }
 }
 </script>
