@@ -1,6 +1,12 @@
 <template>
   <div class="game">
-    <game-header />
+    <div class="ready" v-show="isReadyShow">
+      <div class="count" v-show="delay != 0">{{ delay }}</div>
+      <div class="start" v-show="delay == 0">START</div>
+    </div>
+    <game-header
+      :goal="game.goal"
+    />
     <game-body
       :graph="game.graph.getGraph()"
       :timeIndex="game.timeIndex"
@@ -39,7 +45,10 @@ export default {
   },
   data () {
     return {
-      game: new Game(1000)
+      level: 1,
+      game: new Game(1),
+      isReadyShow: false,
+      delay: 3
     }
   },
   methods: {
@@ -50,11 +59,22 @@ export default {
       } else {
         this.game.sell()
       }
+    },
+    startGame () {
+      setInterval(() => {
+        this.delay -= 1
+        console.log(this.delay)
+        if (this.delay === -1) {
+          this.isReadyShow = false
+          this.game.startGame()
+        }
+      }, 1000)
     }
   },
   created: function () {
     this.$EventBus.$on('playGame', () => {
-      this.game.startGame()
+      this.isReadyShow = true
+      this.startGame()
     })
   }
 }
@@ -65,5 +85,28 @@ export default {
 
 game-footer {
   position: fixed;
+}
+
+.ready {
+  position: fixed;
+  height: 100vh;
+  background-color: rgb(0, 0, 0, 0.7);
+  z-index: 99999;
+  width: 100%;
+}
+
+.count {
+  color: white;
+  font-size: 100px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.start {
+  color: black;
+  font-size: 100px;
+  text-shadow: -2px 0 #efcf00, 0 2px #efcf00, 2px 0 #efcf00, 0 -2px #efcf00;
+  width: 100%;
+  margin: 0 auto;
 }
 </style>
