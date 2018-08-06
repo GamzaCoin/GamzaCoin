@@ -14,6 +14,8 @@
     <game-score-board
       :show="game.gameStatus === 'gameover'"
     />
+    <game-guide
+      />
   </div>
 </template>
 
@@ -22,6 +24,7 @@ import GameHeader from './GameHeader'
 import GameBody from './GameBody'
 import GameFooter from './GameFooter'
 import GameScoreBoard from './GameScoreBoard'
+import GameGuide from './GameGuide'
 
 import Game from './Game/Game'
 
@@ -31,7 +34,8 @@ export default {
     'game-header': GameHeader,
     'game-body': GameBody,
     'game-footer': GameFooter,
-    'game-score-board': GameScoreBoard
+    'game-score-board': GameScoreBoard,
+    'game-guide': GameGuide
   },
   data () {
     return {
@@ -48,8 +52,10 @@ export default {
       }
     }
   },
-  mounted: function () {
-    this.game.startGame()
+  created: function () {
+    this.$EventBus.$on('playGame', () => {
+      this.game.startGame()
+    })
   }
 }
 </script>

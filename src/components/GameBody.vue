@@ -35,17 +35,13 @@ export default {
       intervalID: 0,
       x: 0,
       y: 0,
-      distanceUnit: 15,
-      amplitude: 0
+      distanceUnit: 15
     }
   },
-  methods: {
-    getAmplitude: function () {
+  computed: {
+    amplitude () {
       return Math.max(Math.abs(this.graphData[0] - Math.max.apply(null, this.graphData)), Math.abs(this.graphData[0] - Math.min.apply(null, this.graphData))) + 10
     }
-  },
-  mounted: function () {
-    this.amplitude = this.getAmplitude()
   }
 }
 </script>
@@ -60,19 +56,6 @@ export default {
     position: relative;
     height: 100%;
   }
-
-  .show-aria {
-    height: 100%;
-    border: solid 1px black;
-    position: relative;
-    z-index: 900;
-  }
-
-  .graph-aria {
-    position: relative;
-    z-index: 1000;
-  }
-
   .background {
     height: 200%;
     background-image: url('../assets/bgimage.png');
