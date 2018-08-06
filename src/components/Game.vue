@@ -1,6 +1,6 @@
 <template>
   <div class="game">
-    <div class="ready" v-show="delay >= 0">
+    <div class="ready" v-show="isReadyShow">
       <div class="goal">{{game.goalDesc}}</div>
       <div class="count" v-show="delay != 0">{{ delay }}</div>
       <div class="start" v-show="delay == 0">START</div>
@@ -21,6 +21,8 @@
     <game-score-board
       :show="game.gameStatus === 'gameover'"
     />
+    <game-guide
+      />
   </div>
 </template>
 
@@ -29,6 +31,7 @@ import GameHeader from './GameHeader'
 import GameBody from './GameBody'
 import GameFooter from './GameFooter'
 import GameScoreBoard from './GameScoreBoard'
+import GameGuide from './GameGuide'
 
 import Game from './Game/Game'
 
@@ -38,12 +41,14 @@ export default {
     'game-header': GameHeader,
     'game-body': GameBody,
     'game-footer': GameFooter,
-    'game-score-board': GameScoreBoard
+    'game-score-board': GameScoreBoard,
+    'game-guide': GameGuide
   },
   data () {
     return {
       level: 1,
       game: new Game(2),
+      isReadyShow: false,
       delay: 3
     }
   },
@@ -61,13 +66,17 @@ export default {
         this.delay -= 1
         console.log(this.delay)
         if (this.delay === -1) {
+          this.isReadyShow = false
           this.game.startGame()
         }
       }, 1000)
     }
   },
-  mounted () {
-    this.readyAndStartGame()
+  created: function () {
+    this.$EventBus.$on('playGame', () => {
+      this.isReadyShow = true
+      this.readyAndStartGame()
+    })
   }
 }
 </script>
@@ -82,7 +91,7 @@ game-footer {
 .ready {
   position: fixed;
   height: 100vh;
-  background-color: black;
+  background-color: rgb(0, 0, 0, 0.7);
   z-index: 99999;
   width: 100%;
 }
