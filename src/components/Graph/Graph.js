@@ -77,13 +77,19 @@ class Frame {
     do {
       difficulty = 0;
       let i = 1;
+      let limit = 0;
       while(i < this.numberOfPoints) {
         tempHeight[i] = Math.round((Math.random() * 2 - 1) * 100) / 100;
         if(this.startDirection * Math.pow(-1, i + 1) * (tempHeight[i] - tempHeight[i - 1]) < 0.15)
           continue;
         difficulty += (this.framePoint[i].x - this.framePoint[i - 1].x) * (tempHeight[i] - tempHeight[i - 1]);
+        console.log('shit');
         i++;
       }
+
+      if(limit < 800)
+        break;
+      limit++;
       /*
       for(i = 0; i < 20; i++) {
         if (difficulty < this.difficultyRange[0]) {
