@@ -5,7 +5,7 @@
            v-bind:style="{ width: `calc(100% + ${distanceUnit * (graphLength - 1) / 2 + 100}px)`, transform: `translate(${-1 * distanceUnit * timeIndex / 2}px, ${graph[timeIndex] - graph[0]}px)`}"></div>
       <div class="graph-wrapper">
         <div class="graph"
-             :style="`transform: translate(${-1 * distanceUnit * timeIndex}px, ${(graph[timeIndex] - graph[0]) / amplitude * graphHeight / 2}px)`">
+             :style="{transform: `translate(${-1 * distanceUnit * timeIndex}px, ${(graph[timeIndex] - graph[0]) / amplitude * graphHeight / 2}px)`, top: `calc(50vh - ${graphHeight / 2}px)`}">
           <trend
             :data="graph"
             :gradient="['black']"
@@ -144,9 +144,9 @@ export default {
     width: 50px;
     heigth: 50px;
     left: 75%;
-    top: 56%;
+    top: 50%;
     z-index: 601;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
   }
 
   .item img {

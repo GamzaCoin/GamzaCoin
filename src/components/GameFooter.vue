@@ -19,13 +19,16 @@
       </div>
     </div>
     <div class="game-info">
-      <img class="money-img" src="./../assets/money.png" alt="">
-      <span class="money">{{ money }}</span>
-      <div></div>
-      <img v-show="level === 1" class="item-img" src="./../assets/gamza.png" alt="">
-      <img v-show="level === 2" class="item-img" src="./../assets/tomato.png" alt="">
-      <img v-show="level === 3" class="item-img" src="./../assets/brocoli.png" alt="">
-      <span class="items">{{ numberOfItem }}</span>
+      <div>
+        <img class="money-img" src="./../assets/money.png" alt="">
+        <span class="money">{{ money }}</span>
+      </div>
+      <div>
+        <img v-show="level === 1" class="item-img" src="./../assets/gamza.png" alt="">
+        <img v-show="level === 2" class="item-img" src="./../assets/tomato.png" alt="">
+        <img v-show="level === 3" class="item-img" src="./../assets/brocoli.png" alt="">
+        <span class="items">{{ numberOfItem }}</span>
+      </div>
     </div>
     <button
       v-if="money==0"
@@ -102,18 +105,19 @@ export default {
 }
 .game-info {
   position: fixed;
-  left: 5%;
-  bottom: 1.5%;
+  left: 7%;
+  bottom: 3%;
   text-align: left;
   z-index: 1000;
 }
 
 .money-img, .item-img {
-  width: 12%;
+  width: 40px;
+  vertical-align: middle;
 }
 
 .money, .items {
-  position: fixed;
+  vertical-align: middle;
   font-size: 1.5rem;
   font-weight: 700;
   color: white;
@@ -126,7 +130,7 @@ export default {
 .sellButton, .buyButton {
   position: fixed;
   bottom: 2.5%;
-  left: 45%;
+  left: 46%;
   background: #428aff;
   color: #ffffff;
   text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
@@ -134,7 +138,7 @@ export default {
   border-radius: 20px;
   font-size: 1.7em;
   font-weight: 600;
-  width: 50%;
+  width: 47%;
   padding: 2.4% 1.5% 1.5% 1.5%;
   z-index: 1005;
   height: 85px;
