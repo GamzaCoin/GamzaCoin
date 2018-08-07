@@ -154,7 +154,7 @@ game-footer {
 .goal {
   color: black;
   text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
-  font-size: 170%;
+  font-size: 150%;
   /* width: 100%; */
   margin-top: 60%;
   font-weight: 700;
@@ -162,19 +162,19 @@ game-footer {
 
 @media (max-width: 400px) and (min-width: 375px) {
   .goal {
-    font-size: 160%;
+    font-size: 140%;
   }
 }
 
 @media (max-width: 374px) and (min-width: 350px) {
   .goal {
-    font-size: 150%;
+    font-size: 135%;
   }
 }
 
 @media (max-width: 349px) and (min-width: 320px) {
   .goal {
-    font-size: 140%;
+    font-size: 120%;
   }
 }
 
@@ -188,7 +188,7 @@ game-footer {
 .start {
   color: black;
   font-size: 100px;
-  text-shadow: -2px 0 #efcf00, 0 2px #efcf00, 2px 0 #efcf00, 0 -2px #efcf00;
+  text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
   width: 100%;
   margin: 0 auto;
 }
