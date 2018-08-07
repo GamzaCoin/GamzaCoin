@@ -2,19 +2,19 @@
   <footer class="game-footer">
     <img class="riding-apeach" v-bind:style="{ left: (timeIndex / graphLength * 100) == 0 ? '-13%' : (timeIndex / graphLength * 100 - 15) + '%'}" src="./../assets/riding-apeach.png" alt="">
     <div class="whole-distance">
-      <div 
-        class="progress-distance" 
+      <div
+        class="progress-distance"
         v-bind:style="{ width: (timeIndex / graphLength * 100) + '%',
-        backgroundColor: 
-          (timeIndex / graphLength * 100) >= 0 && (timeIndex / graphLength * 100) < 10 ? '#d0ad00' : 
-          (timeIndex / graphLength * 100) >= 10 && (timeIndex / graphLength * 100) < 20 ? '#d1af00' : 
+        backgroundColor:
+          (timeIndex / graphLength * 100) >= 0 && (timeIndex / graphLength * 100) < 10 ? '#d0ad00' :
+          (timeIndex / graphLength * 100) >= 10 && (timeIndex / graphLength * 100) < 20 ? '#d1af00' :
           (timeIndex / graphLength * 100) >= 20 && (timeIndex / graphLength * 100) < 30 ? '#dfbb00' :
           (timeIndex / graphLength * 100) >= 30 && (timeIndex / graphLength * 100) < 40 ? '#efc900' :
           (timeIndex / graphLength * 100) >= 40 && (timeIndex / graphLength * 100) < 50 ? '#fed621' :
           (timeIndex / graphLength * 100) >= 50 && (timeIndex / graphLength * 100) < 60 ? '#ffd700' :
           (timeIndex / graphLength * 100) >= 60 && (timeIndex / graphLength * 100) < 70 ? '#ffe524' :
           (timeIndex / graphLength * 100) >= 70 && (timeIndex / graphLength * 100) < 80 ? '#fff438' :
-          (timeIndex / graphLength * 100) >= 80 && (timeIndex / graphLength * 100) < 90 ? '#ffff4b' : 
+          (timeIndex / graphLength * 100) >= 80 && (timeIndex / graphLength * 100) < 90 ? '#ffff4b' :
           (timeIndex / graphLength * 100) >= 90 && (timeIndex / graphLength * 100) < 100 ? '#ffff6c' : '#ffff9c'}">
       </div>
     </div>
