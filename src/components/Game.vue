@@ -6,6 +6,7 @@
       <div class="start" v-show="delay == 0">START</div>
     </div>
     <game-header
+      :level="game.level"
       :goal="game.goal"
       :numberOfItem="game.numberOfItem"
       :money="game.money"

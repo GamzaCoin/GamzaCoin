@@ -1,86 +1,92 @@
 <template>
   <header class="game-header">
-    <div class="gauge">
-      <img
-        v-show="(price * numberOfItem + money) / goal * 100 <= 20"
-        class="apeach" src="./../assets/apeach/apeach1.png" alt="">
-      <img
-        v-show="(price * numberOfItem + money) / goal * 100 > 20 && (price * numberOfItem + money) / goal * 100 <= 40"
-        class="apeach" src="./../assets/apeach/apeach2.png" alt="">
-      <img
-        v-show="(price * numberOfItem + money) / goal * 100 > 40 && (price * numberOfItem + money) / goal * 100 <= 60"
-        class="apeach" src="./../assets/apeach/apeach3.png" alt="">
-      <img
-        v-show="(price * numberOfItem + money) / goal * 100 > 60 && (price * numberOfItem + money) / goal * 100 <= 80"
-        class="apeach" src="./../assets/apeach/apeach4.png" alt="">
-      <img
-        v-show="(price * numberOfItem + money) / goal * 100 > 80"
-        class="apeach" src="./../assets/apeach/apeach5.png" alt="">
-      <div class="full-percent">
-        <div
-          class="percent"
-          v-show="(price * numberOfItem + money) / goal * 100 <= 20"
-          v-bind:style="{ width: ((price * numberOfItem + money) / goal * 100)+'%', backgroundColor: 'red'}">
-          <span class="percent-text">
-            {{ (price * numberOfItem + money) / goal * 100 | integerlize }}%
-          </span>
-        </div>
-        <div
-          class="percent"
-          v-show="(price * numberOfItem + money) / goal * 100 > 20 && (price * numberOfItem + money) / goal * 100 <= 40"
-          v-bind:style="{ width: ((price * numberOfItem + money) / goal * 100)+'%', backgroundColor: '#f47d42'}">
-          <span class="percent-text">
-            {{ (price * numberOfItem + money) / goal * 100 | integerlize }}%
-          </span>
-        </div>
-        <div
-          class="percent"
-          v-show="(price * numberOfItem + money) / goal * 100 > 40 && (price * numberOfItem + money) / goal * 100 <= 60"
-          v-bind:style="{ width: ((price * numberOfItem + money) / goal * 100)+'%'}">
-          <span class="percent-text">
-            {{ (price * numberOfItem + money) / goal * 100 | integerlize }}%
-          </span>
-        </div>
-        <div
-          class="percent"
-          v-show="(price * numberOfItem + money) / goal * 100 > 60 && (price * numberOfItem + money) / goal * 100 <= 80"
-          v-bind:style="{ width: ((price * numberOfItem + money) / goal * 100)+'%', backgroundColor: '#00ff99'}">
-          <span
-            v-bind:style="{ color: 'black' }"
-            class="percent-text">
-            {{ (price * numberOfItem + money) / goal * 100 | integerlize }}%
-          </span>
-        </div>
-        <div
-          class="percent"
-          v-show="(price * numberOfItem + money) / goal * 100 > 80 && (price * numberOfItem + money) / goal * 100 <= 99"
-          v-bind:style="{ width: ((price * numberOfItem + money) / goal * 100)+'%', backgroundColor: '#2b77e2'}">
-          <span class="percent-text">
-            {{ (price * numberOfItem + money) / goal * 100 | integerlize }}%
-          </span>
-        </div>
-        <div
-          class="percent"
-          v-show="(price * numberOfItem + money) / goal * 100 >= 100"
-          v-bind:style="{ width: '100%', backgroundColor: 'black'}">
-          <span
-            v-bind:style="{ color: 'white' }"
-            class="percent-text">
-            {{ (price * numberOfItem + money) / goal * 100 | integerlize }}%
-          </span>
-        </div>
-      </div>
+    <!--<div class="gauge">-->
+      <!--<img-->
+        <!--v-show="(price * numberOfItem + money) / goal * 100 <= 20"-->
+        <!--class="apeach" src="./../assets/apeach/apeach1.png" alt="">-->
+      <!--<img-->
+        <!--v-show="(price * numberOfItem + money) / goal * 100 > 20 && (price * numberOfItem + money) / goal * 100 <= 40"-->
+        <!--class="apeach" src="./../assets/apeach/apeach2.png" alt="">-->
+      <!--<img-->
+        <!--v-show="(price * numberOfItem + money) / goal * 100 > 40 && (price * numberOfItem + money) / goal * 100 <= 60"-->
+        <!--class="apeach" src="./../assets/apeach/apeach3.png" alt="">-->
+      <!--<img-->
+        <!--v-show="(price * numberOfItem + money) / goal * 100 > 60 && (price * numberOfItem + money) / goal * 100 <= 80"-->
+        <!--class="apeach" src="./../assets/apeach/apeach4.png" alt="">-->
+      <!--<img-->
+        <!--v-show="(price * numberOfItem + money) / goal * 100 > 80"-->
+        <!--class="apeach" src="./../assets/apeach/apeach5.png" alt="">-->
+      <!--<div class="full-percent">-->
+        <!--<div-->
+          <!--class="percent"-->
+          <!--v-show="(price * numberOfItem + money) / goal * 100 <= 20"-->
+          <!--v-bind:style="{ width: ((price * numberOfItem + money) / goal * 100)+'%', backgroundColor: 'red'}">-->
+          <!--<span class="percent-text">-->
+            <!--{{ (price * numberOfItem + money) / goal * 100 | integerlize }}%-->
+          <!--</span>-->
+        <!--</div>-->
+        <!--<div-->
+          <!--class="percent"-->
+          <!--v-show="(price * numberOfItem + money) / goal * 100 > 20 && (price * numberOfItem + money) / goal * 100 <= 40"-->
+          <!--v-bind:style="{ width: ((price * numberOfItem + money) / goal * 100)+'%', backgroundColor: '#f47d42'}">-->
+          <!--<span class="percent-text">-->
+            <!--{{ (price * numberOfItem + money) / goal * 100 | integerlize }}%-->
+          <!--</span>-->
+        <!--</div>-->
+        <!--<div-->
+          <!--class="percent"-->
+          <!--v-show="(price * numberOfItem + money) / goal * 100 > 40 && (price * numberOfItem + money) / goal * 100 <= 60"-->
+          <!--v-bind:style="{ width: ((price * numberOfItem + money) / goal * 100)+'%'}">-->
+          <!--<span class="percent-text">-->
+            <!--{{ (price * numberOfItem + money) / goal * 100 | integerlize }}%-->
+          <!--</span>-->
+        <!--</div>-->
+        <!--<div-->
+          <!--class="percent"-->
+          <!--v-show="(price * numberOfItem + money) / goal * 100 > 60 && (price * numberOfItem + money) / goal * 100 <= 80"-->
+          <!--v-bind:style="{ width: ((price * numberOfItem + money) / goal * 100)+'%', backgroundColor: '#00ff99'}">-->
+          <!--<span-->
+            <!--v-bind:style="{ color: 'black' }"-->
+            <!--class="percent-text">-->
+            <!--{{ (price * numberOfItem + money) / goal * 100 | integerlize }}%-->
+          <!--</span>-->
+        <!--</div>-->
+        <!--<div-->
+          <!--class="percent"-->
+          <!--v-show="(price * numberOfItem + money) / goal * 100 > 80 && (price * numberOfItem + money) / goal * 100 <= 99"-->
+          <!--v-bind:style="{ width: ((price * numberOfItem + money) / goal * 100)+'%', backgroundColor: '#2b77e2'}">-->
+          <!--<span class="percent-text">-->
+            <!--{{ (price * numberOfItem + money) / goal * 100 | integerlize }}%-->
+          <!--</span>-->
+        <!--</div>-->
+        <!--<div-->
+          <!--class="percent"-->
+          <!--v-show="(price * numberOfItem + money) / goal * 100 >= 100"-->
+          <!--v-bind:style="{ width: '100%', backgroundColor: 'black'}">-->
+          <!--<span-->
+            <!--v-bind:style="{ color: 'white' }"-->
+            <!--class="percent-text">-->
+            <!--{{ (price * numberOfItem + money) / goal * 100 | integerlize }}%-->
+          <!--</span>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+
+    <div class="goalPercent">
+      {{getPercentage | integerlize }}%
     </div>
   </header>
 </template>
 
 <script>
+import {levelData} from '../game-config/levelData'
 
 export default {
   name: 'GameHeader',
   props: ['level', 'goal', 'goalDesc', 'numberOfItem', 'money', 'price'],
   data () {
     return {
+      level_: this.level,
       goal_: this.goal,
       numberOfItem_: this.numberOfItem,
       money_: this.money,
@@ -91,6 +97,12 @@ export default {
   computed: {
     integerPercent () {
       return Math.floor((this.price_ * this.numberOfItem_ + this.money_) / this.goal_ * 100)
+    },
+    getPercentage () {
+      let startMoney = levelData[this.level - 1].startMoney
+      const rate = (this.price * this.numberOfItem + this.money - startMoney) / (this.goal - startMoney)
+      const percent = (rate) * 100
+      return percent
     }
   },
   filters: {
@@ -167,4 +179,16 @@ export default {
   font-weight: 600;
   color: #ffffff;
 }
+
+  .goalPercent{
+    position: absolute;
+    width: 50px;
+    top: 50%;
+    left: calc(100% + 5px);
+    z-index: 601;
+    font-size: 1.5em;
+    white-space: nowrap;
+    color: #ffffff;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+  }
 </style>
