@@ -8,10 +8,10 @@
         v-show="(price * numberOfItem + money) / goal * 100 > 20 && (price * numberOfItem + money) / goal * 100 <= 40"
         class="apeach" src="./../assets/apeach/apeach2.png" alt="">
       <img
-        v-show="(price * numberOfItem + money) / goal * 100 > 40 && (price * numberOfItem + money) / goal * 100 <= 50"
+        v-show="(price * numberOfItem + money) / goal * 100 > 40 && (price * numberOfItem + money) / goal * 100 <= 60"
         class="apeach" src="./../assets/apeach/apeach3.png" alt="">
       <img
-        v-show="(price * numberOfItem + money) / goal * 100 > 50 && (price * numberOfItem + money) / goal * 100 <= 80"
+        v-show="(price * numberOfItem + money) / goal * 100 > 60 && (price * numberOfItem + money) / goal * 100 <= 80"
         class="apeach" src="./../assets/apeach/apeach4.png" alt="">
       <img
         v-show="(price * numberOfItem + money) / goal * 100 > 80"
