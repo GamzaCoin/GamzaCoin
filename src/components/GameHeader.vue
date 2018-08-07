@@ -22,7 +22,7 @@
           v-show="(price * numberOfItem + money) / goal * 100 <= 20"
           v-bind:style="{ width: ((price * numberOfItem + money) / goal * 100)+'%', backgroundColor: 'red'}">
           <span class="percent-text">
-            {{ (price * numberOfItem + money) / goal * 100 | integerlize }}
+            {{ (price * numberOfItem + money) / goal * 100 | integerlize }}%
           </span>
         </div>
         <div
@@ -30,7 +30,7 @@
           v-show="(price * numberOfItem + money) / goal * 100 > 20 && (price * numberOfItem + money) / goal * 100 <= 40"
           v-bind:style="{ width: ((price * numberOfItem + money) / goal * 100)+'%', backgroundColor: '#f47d42'}">
           <span class="percent-text">
-            {{ (price * numberOfItem + money) / goal * 100 | integerlize }}
+            {{ (price * numberOfItem + money) / goal * 100 | integerlize }}%
           </span>
         </div>
         <div
@@ -38,7 +38,7 @@
           v-show="(price * numberOfItem + money) / goal * 100 > 40 && (price * numberOfItem + money) / goal * 100 <= 60"
           v-bind:style="{ width: ((price * numberOfItem + money) / goal * 100)+'%'}">
           <span class="percent-text">
-            {{ (price * numberOfItem + money) / goal * 100 | integerlize }}
+            {{ (price * numberOfItem + money) / goal * 100 | integerlize }}%
           </span>
         </div>
         <div
@@ -48,15 +48,25 @@
           <span
             v-bind:style="{ color: 'black' }"
             class="percent-text">
-            {{ (price * numberOfItem + money) / goal * 100 | integerlize }}
+            {{ (price * numberOfItem + money) / goal * 100 | integerlize }}%
           </span>
         </div>
         <div
           class="percent"
-          v-show="(price * numberOfItem + money) / goal * 100 > 80"
+          v-show="(price * numberOfItem + money) / goal * 100 > 80 && (price * numberOfItem + money) / goal * 100 <= 99"
           v-bind:style="{ width: ((price * numberOfItem + money) / goal * 100)+'%', backgroundColor: '#2b77e2'}">
           <span class="percent-text">
-            {{ (price * numberOfItem + money) / goal * 100 | integerlize }}
+            {{ (price * numberOfItem + money) / goal * 100 | integerlize }}%
+          </span>
+        </div>
+        <div
+          class="percent"
+          v-show="(price * numberOfItem + money) / goal * 100 >= 100"
+          v-bind:style="{ width: 100+'%', backgroundColor: 'black'}">
+          <span
+            v-bind:style="{ color: 'white' }"
+            class="percent-text">
+            {{ (price * numberOfItem + money) / goal * 100 | integerlize }}%
           </span>
         </div>
       </div>
