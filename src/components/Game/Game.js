@@ -71,7 +71,6 @@ export default class Game {
 
   stopGame() {
     clearInterval(this.interval);
-    this.resetBGM();
   }
 
   gameOver() {
