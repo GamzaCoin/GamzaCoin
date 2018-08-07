@@ -17,7 +17,44 @@
         v-show="(price * numberOfItem + money) / goal * 100 > 80"
         class="apeach" src="./../assets/apeach/apeach5.png" alt="">
       <div class="full-percent">
-        <div class="percent" v-bind:style="{ width: ((price * numberOfItem + money) / goal * 100)+'%'}">
+        <div
+          class="percent"
+          v-show="(price * numberOfItem + money) / goal * 100 <= 20"
+          v-bind:style="{ width: ((price * numberOfItem + money) / goal * 100)+'%', backgroundColor: 'red'}">
+          <span class="percent-text">
+            {{ (price * numberOfItem + money) / goal * 100 | integerlize }}
+          </span>
+        </div>
+        <div
+          class="percent"
+          v-show="(price * numberOfItem + money) / goal * 100 > 20 && (price * numberOfItem + money) / goal * 100 <= 40"
+          v-bind:style="{ width: ((price * numberOfItem + money) / goal * 100)+'%', backgroundColor: '#f47d42'}">
+          <span class="percent-text">
+            {{ (price * numberOfItem + money) / goal * 100 | integerlize }}
+          </span>
+        </div>
+        <div
+          class="percent"
+          v-show="(price * numberOfItem + money) / goal * 100 > 40 && (price * numberOfItem + money) / goal * 100 <= 60"
+          v-bind:style="{ width: ((price * numberOfItem + money) / goal * 100)+'%'}">
+          <span class="percent-text">
+            {{ (price * numberOfItem + money) / goal * 100 | integerlize }}
+          </span>
+        </div>
+        <div
+          class="percent"
+          v-show="(price * numberOfItem + money) / goal * 100 > 60 && (price * numberOfItem + money) / goal * 100 <= 80"
+          v-bind:style="{ width: ((price * numberOfItem + money) / goal * 100)+'%', backgroundColor: '#00ff99'}">
+          <span
+            v-bind:style="{ color: 'black' }"
+            class="percent-text">
+            {{ (price * numberOfItem + money) / goal * 100 | integerlize }}
+          </span>
+        </div>
+        <div
+          class="percent"
+          v-show="(price * numberOfItem + money) / goal * 100 > 80"
+          v-bind:style="{ width: ((price * numberOfItem + money) / goal * 100)+'%', backgroundColor: '#2b77e2'}">
           <span class="percent-text">
             {{ (price * numberOfItem + money) / goal * 100 | integerlize }}
           </span>
@@ -107,7 +144,7 @@ export default {
   }
 }
 .percent {
-  border: 1px solid #ffc300;
+  border: 1px solid transparent;
   background-color: #ffc300;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;

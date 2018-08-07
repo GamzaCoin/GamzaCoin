@@ -62,7 +62,7 @@ export default {
   data () {
     return {
       level: 1,
-      game: new Game(3),
+      game: new Game(1),
       isReadyShow: false,
       delay: 3,
       price: 0
@@ -123,19 +123,39 @@ game-footer {
 .ready {
   position: fixed;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.7);
   z-index: 99999;
   width: 100%;
 }
 
 .goal {
-  color: white;
-  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-  font-size: 18px;
+  color: black;
+  text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
+  font-size: 170%;
+  /* width: 100%; */
   margin-top: 60%;
+  font-weight: 700;
 }
+
+@media (max-width: 400px) and (min-width: 375px) {
+  .goal {
+    font-size: 160%;
+  }
+}
+
+@media (max-width: 374px) and (min-width: 350px) {
+  .goal {
+    font-size: 150%;
+  }
+}
+
+@media (max-width: 349px) and (min-width: 320px) {
+  .goal {
+    font-size: 140%;
+  }
+}
+
 .count {
-  color: white;
+  color: black;
   font-size: 100px;
   width: 100%;
   margin: 0 auto;

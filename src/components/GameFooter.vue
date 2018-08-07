@@ -5,7 +5,7 @@
       <span class="money">{{ money }}</span>
       <div></div>
       <img class="item-img" src="./../assets/gamza.png" alt="">
-      <span class="item">{{ numberOfItem }}</span>
+      <span class="items">{{ numberOfItem }}</span>
     </div>
     <button
       v-if="money==0"
@@ -60,7 +60,7 @@ export default {
   width: 12%;
 }
 
-.money, .item {
+.money, .items {
   position: fixed;
   font-size: 1.5rem;
   font-weight: 700;
