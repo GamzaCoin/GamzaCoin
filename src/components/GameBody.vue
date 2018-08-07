@@ -62,7 +62,7 @@ export default {
 
   .background {
     height: 150%;
-    background-image: url('../assets/background/stage1.png');
+    background-image: url('../assets/background/stage2.png');
     background-size: cover;
     background-repeat: repeat;
     position: absolute;
@@ -107,7 +107,6 @@ export default {
     width: 50px;
     heigth: 50px;
     left: 80%;
-    top: 10%;
     top: 56%;
     z-index: 601;
     transform: translateX(-50%);
