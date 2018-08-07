@@ -39,9 +39,9 @@ export default {
   }
   .img-wrapper{
     background-image: url('../assets/guide.png');
-    background-size: 300px 300px;
+    background-size: 300px 400px;
     width: 300px;
-    height: 300px;
+    height: 400px;
   }
   .check-button {
     background: #ff686e;
@@ -55,5 +55,6 @@ export default {
     width: 50%;
     padding: 1.5%;
     cursor: pointer;
+    margin-top:0px;
   }
 </style>

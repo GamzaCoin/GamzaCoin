@@ -41,7 +41,7 @@ export default class Game {
       return;
     if(!this.numberOfItem)
       return;
-    let price = this.graph.graphData[this.timeIndex + 1] || this.graph.graphData[this.timeIndex];
+    let price = this.graph.graphData[this.timeIndex] || this.graph.graphData[this.timeIndex];
     this.money = Math.round(this.numberOfItem * price);
     this.numberOfItem = 0;
     this.history.push({type: 'sell', timeIndex: this.timeIndex, price: price, numberOfItem: this.numberOfItem, money: this.money})
@@ -52,7 +52,7 @@ export default class Game {
       return;
     if(!this.money)
       return;
-    let price = this.graph.graphData[this.timeIndex + 1] || this.graph.graphData[this.timeIndex];
+    let price = this.graph.graphData[this.timeIndex] || this.graph.graphData[this.timeIndex];
     this.numberOfItem = Math.round(this.money / price * 10) / 10;
     this.money = 0;
     this.history.push({type: 'buy', timeIndex: this.timeIndex, price: price, numberOfItem: this.numberOfItem, money: this.money})
@@ -79,8 +79,8 @@ export default class Game {
   }
 
   showScoreBoard() {
-    let currentPrice = this.graph.graphData[this.timeIndex + 1] || this.graph.graphData[this.timeIndex];
-    const worth = this.money + this.numberOfItem * currentPrice;
+    const currentPrice = this.graph.graphData[this.timeIndex + 1] || this.graph.graphData[this.timeIndex];
+    const worth = Math.round(this.money + this.numberOfItem * currentPrice);
     this.isClear = worth >= this.goal;
     this.totalScore = worth;
     this.gameStatus = 'gameover';

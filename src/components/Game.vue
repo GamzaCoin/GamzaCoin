@@ -17,6 +17,8 @@
       :timeIndex="game.timeIndex"
       :graphLength="game.graph.graphLength"
       :itemImg="game.itemImg"
+      :numberOfItem="game.numberOfItem"
+      :history="game.history"
     />
     <game-footer
       v-on:onClickSellOrBuy="onClickSellOrBuy"
