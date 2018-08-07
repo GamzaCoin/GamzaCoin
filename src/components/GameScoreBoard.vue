@@ -101,6 +101,7 @@ export default{
     width: 40%;
     padding: 1.5%;
     cursor: pointer;
+    margin-top:50px;
   }
 
 </style>

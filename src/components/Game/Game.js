@@ -24,7 +24,6 @@ export default class Game {
   sellAt(price) {
     if(!this.numberOfItem)
       return;
-    console.log(this.numberOfItem, price, this.numberOfItem * price);
     this.money = this.numberOfItem * price;
     this.numberOfItem = 0;
   }
@@ -32,7 +31,6 @@ export default class Game {
   buyAt(price) {
     if(!this.money)
       return;
-    console.log(this.numberOfItem, price, this.numberOfItem * price);
 
     this.numberOfItem = Math.round(this.money / price * 10) / 10;
     this.money = 0;
