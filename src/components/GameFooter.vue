@@ -75,7 +75,7 @@ export default {
   position: fixed;
   bottom: 3.5%;
   left: 45%;
-  background: #ff686e;
+  background: #428aff;
   color: #ffffff;
   text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
   border: 3px solid black;
@@ -89,6 +89,6 @@ export default {
 }
 
 .buyButton {
-  background: #428aff;
+  background: #ff686e;
 }
 </style>
