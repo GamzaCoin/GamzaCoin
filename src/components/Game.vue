@@ -31,6 +31,8 @@
       :gameStatus="game.gameStatus"
       :isClear="game.isClear"
       :totalScore="game.totalScore"
+      :level="game.level"
+      :lastLevel="game.lastLevel"
     />
     <audio ref="bgm">
       <source src="../assets/audio/bgm_apeach.mp3" />
