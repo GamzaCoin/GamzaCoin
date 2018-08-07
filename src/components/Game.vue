@@ -125,13 +125,13 @@ export default {
     this.$EventBus.$on('nextStage', () => {
       this.level += 1
       this.game = new Game(this.level)
-      this.$EventBus.$emit('rerenderComponent');
+      this.$EventBus.$emit('rerenderComponent')
       this.isReadyShow = true
       this.readyAndStartGame()
     })
     this.$EventBus.$on('retryStage', () => {
       this.game = new Game(this.level)
-      this.$EventBus.$emit('rerenderComponent');
+      this.$EventBus.$emit('rerenderComponent')
       this.isReadyShow = true
       this.readyAndStartGame()
     })
