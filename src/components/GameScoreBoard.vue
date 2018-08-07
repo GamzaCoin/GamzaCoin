@@ -61,13 +61,13 @@ export default{
       width:80%;
       height:60%;
       background-image: url('../assets/score_board.png');
-      background-size: 250px 300px;
+      background-size: contain;
       background-repeat: no-repeat;
     }
     .resultTitle{
       font-size: 20px;
       color: white;
-      padding-top: 42px;
+      padding-top: 13%;
       text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
     }
   }
@@ -77,13 +77,13 @@ export default{
       width:80%;
       height:60%;
       background-image: url('../assets/score_board.png');
-      background-size: 300px 300px;
+      background-size: contain;
       background-repeat: no-repeat;
     }
     .resultTitle{
       font-size: 25px;
       color: white;
-      padding-top: 37px;
+      padding-top: 13%;
       text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
     }
   }
@@ -93,19 +93,35 @@ export default{
       width:80%;
       height:60%;
       background-image: url('../assets/score_board.png');
-      background-size: 350px 300px;
+      background-size: contain;
       background-repeat: no-repeat;
     }
     .resultTitle{
       font-size: 25px;
       color: white;
-      padding-top: 37px;
-      padding-left: 20px;
+      padding-top: 14.5%;
+      text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    }
+  }
+  @media (min-width:475px){
+    .score-board-wrapper{
+      margin:30% auto;
+      width:80%;
+      height:60%;
+      background-image: url('../assets/score_board.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    .resultTitle{
+      font-size: 25px;
+      color: white;
+      padding-top: 14.5%;
+      padding-bottom: 5%;
       text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
     }
   }
   .score{
-    font-size: 35px;
+    font-size: 45px;
     padding: 20% 0 20% 0;
     color: #FFCC00;
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
@@ -140,10 +156,11 @@ export default{
     border-radius: 20px;
     font-size: 120%;
     font-weight: 600;
-    width: 40%;
-    padding: 1.5%;
+    width: 50%;
+    padding: 2.5% 1.5% 1.5% 1.5%;
     cursor: pointer;
-    margin-top:50px;
+    margin-top:12px;
+    height: 50px;
   }
 
 </style>
