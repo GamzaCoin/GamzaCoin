@@ -81,10 +81,7 @@ export default {
     readyAndStartGame () {
       let countdownInterval = setInterval(() => {
         this.delay -= 1
-<<<<<<< HEAD
-=======
         this.playCountdownSound()
->>>>>>> ae9f52722c9a85e58112c63ec66e2f6bb866f2e8
         if (this.delay === -1) {
           this.playBGM()
           this.isReadyShow = false
