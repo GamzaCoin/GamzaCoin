@@ -1,12 +1,12 @@
 <template>
-  <div v-show="isGameEnd" class="score-board-container">
+  <div v-show="this.gameStatus === 'gameover'" class="score-board-container">
     <div class="score-board-wrapper bounceIn animated">
       <div>
-        <div v-if="isGameSuccess" class="resultTitle">성공</div>
+        <div v-if="this.isClear" class="resultTitle">성공</div>
         <div v-else class="resultTitle">실패</div>
       </div>
       <div class="score">
-        {{score}}
+        {{this.totalScore}}
       </div>
       <!--<div class="log">-->
       <!--<div class="content-wrapper">-->
@@ -19,8 +19,9 @@
       <!--</div>-->
       <!--</div>-->
       <div class="button">
-        <button v-if="isGameSuccess" class="check-button" style="background-color:#003458">진행하기</button>
-        <button v-else class="check-button">다시하기</button>
+        <button class="check-button" style="background-color:#FFCC00" v-on:click="$router.push('/')">홈으로</button>
+        <button v-if="this.isClear" class="check-button" style="background-color:#003458" v-on:click="nextStage">진행하기</button>
+        <button v-else class="check-button" v-on:click="retryStage">다시하기</button>
       </div>
     </div>
   </div>
@@ -32,14 +33,16 @@ export default{
   props: ['gameStatus', 'isClear', 'totalScore'],
   data () {
     return {
-      isGameSuccess: this.isClear,
-      isGameEnd: this.gameStatus === 'gameover',
-      score: this.totalScore
+      // isGameSuccess: ,
+      // isGameEnd: this.gameStatus === 'gameover',
+      // score: this.totalScore
     }
   },
   methods: {
+    retryStage () {
+      this.$EventBus.$emit('retryStage')
+    },
     nextStage () {
-      this.isGameEnd = false
       this.$EventBus.$emit('nextStage')
     }
   }
@@ -105,7 +108,7 @@ export default{
     border-radius: 20px;
     font-size: 120%;
     font-weight: 600;
-    width: 50%;
+    width: 40%;
     padding: 1.5%;
     cursor: pointer;
   }

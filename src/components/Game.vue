@@ -23,9 +23,6 @@
       :numberOfItem="game.numberOfItem"
       :money="game.money"
     />
-    <game-score-board
-      v-show="game.gameStatus === 'gameover'"
-    />
     <game-guide/>
     <game-score-board
       :gameStatus="game.gameStatus"
@@ -82,6 +79,7 @@ export default {
       this.price = this.game.history[this.game.history.length - 1].price
     },
     readyAndStartGame () {
+      this.delay = 3
       let countdownInterval = setInterval(() => {
         this.delay -= 1
         this.playCountdownSound()
@@ -94,12 +92,12 @@ export default {
       }, 1000)
     },
     playBGM () {
+      this.$refs.bgm.currentTime = 0
       this.$refs.bgm.play()
     },
-    resetBGM () {
-      this.$refs.bgm.pause()
-      this.$refs.bgm.currentTime = 0
-    },
+    // resetBGM () {
+    //   this.$refs.bgm.pause()
+    // },
     playBtnClickSound () {
       this.$refs.btn_click_sound.play()
     },
@@ -114,6 +112,11 @@ export default {
     })
     this.$EventBus.$on('nextStage', () => {
       this.level += 1
+      this.game = new Game(this.level)
+      this.isReadyShow = true
+      this.readyAndStartGame()
+    })
+    this.$EventBus.$on('retryStage', () => {
       this.game = new Game(this.level)
       this.isReadyShow = true
       this.readyAndStartGame()
