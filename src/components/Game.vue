@@ -29,7 +29,7 @@
     <game-score-board
       :gameStatus="game.gameStatus"
       :isClear="game.isClear"
-      :score="game.totalScore"
+      :totalScore="game.totalScore"
     />
     <audio ref="bgm">
       <source src="../assets/audio/bgm_apeach.mp3" />
