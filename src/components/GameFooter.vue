@@ -13,17 +13,17 @@
       v-if="money==0"
       class="sellButton"
       @click="onClickBtn">
-      <span v-show="level === 1">모든 감자 팔기</span>
-      <span v-show="level === 2">모든 토마토 팔기</span>
-      <span v-show="level === 3">모든 브로콜리 팔기</span>
+      <span v-show="level === 1">감자 팔기</span>
+      <span v-show="level === 2">토마토 팔기</span>
+      <span v-show="level === 3">브로콜리 팔기</span>
     </button>
     <button
       v-if="numberOfItem==0"
       class="buyButton"
       @click="onClickBtn">
-      <span v-show="level === 1">모든 감자 사기</span>
-      <span v-show="level === 2">모든 토마토 사기</span>
-      <span v-show="level === 3">모든 브로콜리 사기</span>
+      <span v-show="level === 1">감자 사기</span>
+      <span v-show="level === 2">토마토 사기</span>
+      <span v-show="level === 3">브로콜리 사기</span>
     </button>
   </footer>
 </template>
