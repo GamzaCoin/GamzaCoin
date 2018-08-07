@@ -17,6 +17,8 @@ export default class Game {
     this.graph = new Graph(levelData[level - 1].GraphData);
     this.history = [];
     this.gameStatus = 'ready';
+    this.isClear = null;
+    this.totalScore = 0;
   }
 
   sellAt(price) {
@@ -79,6 +81,10 @@ export default class Game {
   }
 
   showScoreBoard() {
+    let currentPrice = this.graph.graphData[this.timeIndex + 1] || this.graph.graphData[this.timeIndex];
+    const worth = this.money + this.numberOfItem * currentPrice;
+    this.isClear = worth >= this.goal;
+    this.totalScore = worth;
     this.gameStatus = 'gameover';
   }
 }
