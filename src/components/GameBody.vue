@@ -12,12 +12,15 @@
             :padding="0"
             :height="graphHeight"
             :width="distanceUnit * graphLength"
-            :radius="100"
+            :radius="5"
             :max="graphData[0] + amplitude"
             :min="graphData[0] - amplitude"
             smooth>
           </trend>
-          <div class="guide-line" v-show="numberOfItem" :style="{width: `${distanceUnit * graphLength}px`, transform:`translate(0, ${history[history.length -1].price / amplitude * graphHeight / 2}px)`}"></div>
+          <div class="guide-line" v-show="numberOfItem" :style="{width: `${distanceUnit * graphLength}px`, transform:`translate(0, ${history.length ? (graphData[0] - history[history.length - 1].price) / amplitude * graphHeight / 2 + graphHeight / 2: 0}px)`}"></div>
+          <div ref="point_list" class="point-list">
+            <div v-for="(point, index) in history" :key="index" class="point" :style="{backgroundColor: `${point.type === 'buy' ? '#ffffff' : '#ffffff'}`, left: `${distanceUnit * point.timeIndex}px`, top: `${history.length ? (graphData[0] - point.price) / amplitude * graphHeight / 2 + graphHeight / 2: 0}px`}">a</div>
+          </div>
         </div>
       </div>
       <div class="item"><img :src="getImgUrl(itemImg)" :class="{spin: timeIndex > 0}"/></div>
@@ -34,7 +37,10 @@ export default {
       graphData: this.graph,
       graphHeight: 800,
       intervalID: 0,
-      distanceUnit: 30
+      distanceUnit: 30,
+      points: this.history.map(function (x) {
+        return x
+      })
     }
   },
   methods: {
@@ -70,11 +76,11 @@ export default {
     z-index: 100;
     top:-25%;
 
-    -webkit-transition: transform 0.5s linear;
+    -webkit-transition: transform 0.5s ease;
     -moz-transition: transform 0.5s ease;
     -ms-transition: transform 0.5s ease;
     -o-transition: transform 0.5s ease;
-    transition: transform 0.5s linear;
+    transition: transform 0.5s ease;
   }
 
   .graph-wrapper {
@@ -91,11 +97,11 @@ export default {
     height: 100%;
     width: 100%;
     left: 100%;
-    -webkit-transition: transform 0.5s linear;
+    -webkit-transition: transform 0.5s ease;
     -moz-transition: transform 0.5s ease;
     -ms-transition: transform 0.5s ease;
     -o-transition: transform 0.5s ease;
-    transition: transform 0.5s linear;
+    transition: transform 0.5s ease;
   }
 
   .graph svg path {
@@ -140,6 +146,22 @@ export default {
     top: 0;
     background-color: aqua;
     position: absolute;
+  }
+
+  .point-list {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .point-list .point {
+    width: 25px;
+    height: 25px;
+    border-radius: 50px;
+    background-color: #dddddd;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    z-index: 6002;
   }
 
 </style>
