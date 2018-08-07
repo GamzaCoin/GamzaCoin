@@ -52,6 +52,12 @@ export default {
     amplitude () {
       return Math.max(Math.abs(this.graphData[0] - Math.max.apply(null, this.graphData)), Math.abs(this.graphData[0] - Math.min.apply(null, this.graphData))) + 10
     }
+  },
+  created: function() {
+    this.$EventBus.$on('rerenderComponent', () => {
+      console.log('rerender');
+      Object.assign(this.$data, this.$options.data());
+    })
   }
 }
 </script>
