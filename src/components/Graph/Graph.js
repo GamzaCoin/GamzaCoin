@@ -6,9 +6,9 @@ export default class Graph {
     this.levelData = levelData;
     this.maximumChange = levelData.maximumChange;
     this.startPrice = levelData.startPrice;
+    this.slumpRatio = levelData.slumpRatio;
     this.frame = new Frame(levelData.graphLength, levelData.numberOfFramePoints, levelData.frameDifficultyRange, levelData.frameStartDirection, this.slumpRatio);
     this.noise = [];
-    this.slumpRatio = levelData.slumpRatio;
 
     for (let i = 0; i < levelData.numberOfFramePoints - 1; i++)
       this.noise.push(new Noise(levelData.noiseLength, this.frame.framePoint[i + 1].x - this.frame.framePoint[i].x - 1, levelData.noiseStrength, levelData.noiseScoreRange));
@@ -79,7 +79,7 @@ class Frame {
   initFramePointY() {
     let tempHeight = new Array(this.numberOfPoints).fill(0);
     let difficulty;
-    let limit = 800;
+    let limit = 1000;
     do {
       difficulty = 0;
       let i = 1;
@@ -87,14 +87,19 @@ class Frame {
         tempHeight[i] = Math.round((Math.random() * 2 - 1) * 100) / 100;
         if(this.startDirection * Math.pow(-1, i + 1) * (tempHeight[i] - tempHeight[i - 1]) < 0.10)
           continue;
-        if(this.startDirection * Math.pow(-1, i + 1) < 0 && this.slumpRatio < Math.abs(tempHeight[i] - tempHeight[i - 1]))
+        //console.log("d:", this.startDirection * Math.pow(-1, i + 1),this.slumpRatio, tempHeight[i], tempHeight[i-1]);
+        if(this.startDirection * Math.pow(-1, i + 1) < 0 && this.slumpRatio < Math.abs(tempHeight[i] - tempHeight[i - 1])) {
+          console.log("funck");
           continue;
+        }
         difficulty += (this.framePoint[i].x - this.framePoint[i - 1].x) * (tempHeight[i] - tempHeight[i - 1]);
         i++;
       }
 
-      if(limit-- < 0)
+      if(limit-- < 0) {
+        console.log('initFramePointY fail');
         break;
+      }
       /*
       for(i = 0; i < 20; i++) {
         if (difficulty < this.difficultyRange[0]) {
@@ -114,6 +119,7 @@ class Frame {
         }
       }
       */
+      console.log('do while', difficulty);
     } while(difficulty < this.difficultyRange[0] || this.difficultyRange[1] < difficulty);
 
     for(let i in tempHeight)
@@ -139,7 +145,7 @@ class Noise {
     let noise = new Array(this.numberOfNoisePoint);
     let i;
     let bestScore = 0;
-    let limit = 800;
+    let limit = 1000;
     do {
       for(i = this.noiseLength - 1; i < this.numberOfNoisePoint; i += this.noiseLength) {
         noise[i] = Math.round((Math.random() * 2 - 1) * this.strength * 1000) / 1000;
@@ -151,8 +157,10 @@ class Noise {
 
       bestScore = this.getBestScore(noise);
 
-      if(limit-- < 800)
+      if(limit-- < 0) {
+        console.log('makeNoise fail');
         break;
+      }
     } while(this.scoreRange[0] > bestScore || bestScore > this.scoreRange[1]);
 
     this.noise = noise;

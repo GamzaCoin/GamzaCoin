@@ -72,8 +72,8 @@ export default {
   },
   data () {
     return {
-      level: 1,
-      game: new Game(1),
+      level: 2,
+      game: new Game(3),
       isReadyShow: false,
       delay: 3,
       price: 0
