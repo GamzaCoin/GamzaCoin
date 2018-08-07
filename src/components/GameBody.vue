@@ -27,7 +27,7 @@
 <script>
 export default {
   name: 'GameBody',
-  props: ['graph', 'graphLength', 'timeIndex', 'itemImg'],
+  props: ['level', 'graph', 'graphLength', 'timeIndex', 'itemImg'],
   data () {
     return {
       graphData: this.graph,

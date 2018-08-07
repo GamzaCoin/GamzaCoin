@@ -1,6 +1,5 @@
 <template>
   <header class="game-header">
-    <!-- <button class="title" disabled>LV.{{level}} <span class="item-name">감자</span> 10개로 불리기</button> -->
     <div class="gauge">
       <img
         v-show="(price * numberOfItem + money) / goal * 100 <= 20"
@@ -18,8 +17,9 @@
         v-show="(price * numberOfItem + money) / goal * 100 > 80"
         class="apeach" src="./../assets/apeach/apeach5.png" alt="">
       <div class="full-percent">
-        <div class="percent"><span class="percent-text">
-          {{ (price * numberOfItem + money) / goal * 100 | integerlize }}
+        <div class="percent" v-bind:style="{ width: ((price * numberOfItem + money) / goal * 100)+'%'}">
+          <span class="percent-text">
+            {{ (price * numberOfItem + money) / goal * 100 | integerlize }}
           </span>
         </div>
       </div>
@@ -62,30 +62,13 @@ export default {
   z-index: 1000;
 }
 
-.item-name {
-  color: #f7931e;
-}
-.title {
-  position: fixed;
-  top: 2%;
-  left: 10%;
-  background: #9b6b69;
-  color: #ffffff;
-  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-  border: 3px solid black;
-  border-radius: 20px;
-  font-size: 150%;
-  font-weight: 600;
-  width: 80%;
-  padding: 1.5%;
-}
-
 .apeach {
   top: 50%;
-  left: 50%;
+  left: 20%;
+  margin-left: 25%;
   /* position:absolute; */
-  width: 50%;
-  padding: 2%;
+  width: 80px;
+  padding: 1%;
   border: 3px solid #b29874;
   background-color: #b29874;
   border-radius: 50px;
@@ -93,38 +76,47 @@ export default {
 }
 
 .full-percent {
-  position: absolute;
+  /* position: absolute; */
   border: 1px solid grey;
   background-color: grey;
-  border-radius: 20px;
-  width: 200%;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
   padding: 3%;
   top: 30%;
-  left: 50%;
   z-index:-1;
+  width: 315%;
+  margin-top: -70%;
+  margin-left: 120%;
 }
 
-@media (max-width: 400px) and (min-width: 376px) {
+@media (max-width: 400px) and (min-width: 375px) {
   .full-percent {
-    width: 160%;
+    width: 275%;
   }
 }
 
-@media (max-width: 376px) and (min-width: 350px) {
+@media (max-width: 374px) and (min-width: 350px) {
   .full-percent {
-    width: 170%;
+    width: 260%;
   }
 }
 
 @media (max-width: 349px) and (min-width: 320px) {
   .full-percent {
-    width: 140%;
+    width: 210%;
   }
 }
 .percent {
   border: 1px solid #ffc300;
   background-color: #ffc300;
-  border-radius: 20px;
-  width: 60%;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  /* margin-left: 20%; */
+  margin-right: 50%;
+}
+
+.percent-text {
+  font-weight: 600;
+  color: #ffffff;
 }
 </style>

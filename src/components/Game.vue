@@ -12,6 +12,7 @@
       :price="this.price"
     />
     <game-body
+      :level="game.level"
       :graph="game.graph.getGraph()"
       :timeIndex="game.timeIndex"
       :graphLength="game.graph.graphLength"
@@ -69,7 +70,7 @@ export default {
   },
   methods: {
     onClickSellOrBuy: function (price) {
-      console.log('in onClickSellOrBuy', this.game, price)
+      console.log('in onClickSellOrBuy', this.game)
       if (this.game.numberOfItem === 0) {
         this.game.buy()
       } else {
@@ -127,6 +128,12 @@ game-footer {
   width: 100%;
 }
 
+.goal {
+  color: white;
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+  font-size: 18px;
+  margin-top: 60%;
+}
 .count {
   color: white;
   font-size: 100px;
