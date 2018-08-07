@@ -1,6 +1,6 @@
 <template>
   <footer class="game-footer">
-    <img class="riding-apeach" v-bind:style="{ left: (timeIndex / graphLength * 100) == 0 ? '-13%' : (timeIndex / graphLength * 100 - 15) + '%'}" src="./../assets/riding-apeach.png" alt="">
+    <img class="riding-apeach" v-bind:style="{ left: (timeIndex / graphLength * 100)*0.9-1 + '%'}" src="./../assets/riding-apeach.png" alt="">
     <div class="whole-distance">
       <div
         class="progress-distance"
@@ -76,9 +76,9 @@ export default {
 }
 
 .riding-apeach {
-  width:20%;
+  width:15%;
   position: absolute;
-  bottom: 7.5rem;
+  bottom: 7.8rem;
   z-index: 900;
   left: 0%;
 }
