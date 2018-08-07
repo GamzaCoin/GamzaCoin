@@ -74,7 +74,7 @@ export default {
 
   .background {
     height: 150%;
-    background-image: url('../assets/background/stage2.png');
+    background-image: url('../assets/background/stage1.png');
     background-size: cover;
     background-repeat: repeat;
     position: absolute;
