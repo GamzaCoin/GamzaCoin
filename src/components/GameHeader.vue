@@ -112,7 +112,7 @@ export default {
 .apeach {
   top: 50%;
   left: 20%;
-  margin-left: 135%;
+  margin-left: 130%;
   width: 50px;
   padding: 1%;
   border: 3px solid #b29874;
@@ -131,7 +131,7 @@ export default {
   z-index:-1;
   width: 315%;
   margin-top: -80%;
-  margin-left: 230%;
+  margin-left: 225%;
   height: 18px
 }
 

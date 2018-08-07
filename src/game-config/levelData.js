@@ -2,7 +2,7 @@
 export const levelData = [
   {
     level: 1,
-    startMoney: 11000,
+    startMoney: 1000,
     GraphData: {
       startPrice: 300,
       maximumChange: 100,
@@ -20,7 +20,7 @@ export const levelData = [
     goal: 1300,
   }, {
     level: 2,
-    startMoney: 12000,
+    startMoney: 2000,
     GraphData: {
       startPrice: 300,
       maximumChange: 100,
@@ -38,7 +38,7 @@ export const levelData = [
     goal: 3000,
   }, {
     level: 3,
-    startMoney: 12000,
+    startMoney: 2000,
     GraphData: {
       startPrice: 400,
       maximumChange: 100,
