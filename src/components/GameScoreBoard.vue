@@ -1,37 +1,27 @@
 <template>
-  <div class="score-board-container">
-    <div v-if="isGameSuccess" class="success-img"></div>
-    <div v-else class="fail-img"></div>
-    <div class="score-board-wrapper">
+  <div v-show="this.gameStatus === 'gameover'" class="score-board-container">
+    <div class="score-board-wrapper bounceIn animated">
       <div>
-        <div v-if="isGameSuccess" class="resultTitle">성공!</div>
-        <div v-else class="resultTitle">실패...</div>
+        <div v-if="this.isClear" class="resultTitle">성공</div>
+        <div v-else class="resultTitle">실패</div>
       </div>
       <div class="score">
-        내 점수 : {{score}}원
+        {{this.totalScore}}
       </div>
-      <div class="log">
-        <div class="title-wrapper">
-          <div class="type">
-            구분
-          </div>
-          <div class="price">
-            가격
-          </div>
-        </div>
-        <div class="content-wrapper">
-          <div class="type">판매</div>
-          <div class="price">427원</div>
-        </div>
-        <div class="content-wrapper" style="background-color:#88ce99">
-          <div class="type">구매</div>
-          <div class="price">488원</div>
-        </div>
-
-      </div>
+      <!--<div class="log">-->
+      <!--<div class="content-wrapper">-->
+      <!--<div class="type" style="color:red;">판매</div>-->
+      <!--<div class="price">427원</div>-->
+      <!--</div>-->
+      <!--<div class="content-wrapper">-->
+      <!--<div class="type" style="color:blue;">구매</div>-->
+      <!--<div class="price">488원</div>-->
+      <!--</div>-->
+      <!--</div>-->
       <div class="button">
-        <button v-if="isGameSuccess" class="check-button" style="background-color:#003458">진행하기</button>
-        <button v-else class="check-button" >다시하기</button>
+        <button class="check-button" style="background-color:#FFCC00" v-on:click="$router.push('/')">홈으로</button>
+        <button v-if="this.isClear" class="check-button" style="background-color:#003458" v-on:click="nextStage">진행하기</button>
+        <button v-else class="check-button" v-on:click="retryStage">다시하기</button>
       </div>
     </div>
   </div>
@@ -40,30 +30,26 @@
 <script>
 export default{
   name: 'GameScoreBoard',
+  props: ['gameStatus', 'isClear', 'totalScore'],
   data () {
     return {
-      isGameSuccess: false,
-      score: 1000
+      // isGameSuccess: ,
+      // isGameEnd: this.gameStatus === 'gameover',
+      // score: this.totalScore
+    }
+  },
+  methods: {
+    retryStage () {
+      this.$EventBus.$emit('retryStage')
+    },
+    nextStage () {
+      this.$EventBus.$emit('nextStage')
     }
   }
 }
 </script>
 
 <style>
-  .success-img{
-    background-image: url('../assets/success.png');
-    background-size: 100px 100px;
-    width:100px;
-    height:100px;
-    margin: 15% auto 0 auto;
-  }
-  .fail-img{
-    background-image: url('../assets/fail.png');
-    background-size: 120px 120px;
-    width:100px;
-    height:100px;
-    margin: 15% auto 0 auto;
-  }
   .score-board-container{
     background-color: rgba(0, 0, 0, 0.7);
     position: fixed;
@@ -73,44 +59,46 @@ export default{
     top: 0;
   }
   .score-board-wrapper{
-    border: 5px solid black;
-    margin:0 auto;
+    margin:30% auto;
     width:80%;
     height:60%;
-    border-radius:20%;
-    background-color:#ffffff;
+    background-image: url('../assets/score_board.png');
+    background-size: 300px 300px;
+    background-repeat: no-repeat;
   }
   .resultTitle{
-    font-size:40px;
+    font-size: 25px;
+    color: white;
+    padding-top: 37px;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
   }
   .score{
-    font-size: 20px;
+    font-size: 35px;
+    padding: 20% 0 20% 0;
+    color: #FFCC00;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
   }
   .log{
     width: 80%;
     height: 60%;
-    border: solid 3px #c38c8c;
-    border-radius: 20%;
     margin: 15px auto;
     overflow: hidden;
   }
   .log .title-wrapper{
-    border-bottom: solid 3px #c38c8c;
-    padding: 5px 0 5px 0;
-    background-color:#b6b999;
   }
   .log .type{
     width: 50%;
     display:inline-block;
     float:left;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   }
   .log .price{
     width:50%;
     display:inline-block;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    color: #ffffff;
   }
   .content-wrapper{
-    padding: 5px 0 5px 0px;
-    background-color: #ece6cc;
   }
   .check-button {
     background: #ff686e;
@@ -120,7 +108,7 @@ export default{
     border-radius: 20px;
     font-size: 120%;
     font-weight: 600;
-    width: 50%;
+    width: 40%;
     padding: 1.5%;
     cursor: pointer;
   }

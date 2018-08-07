@@ -38,7 +38,8 @@ export default {
     margin: 20% auto;
   }
   .img-wrapper{
-    background-image: url('../assets/graph-background.png');
+    background-image: url('../assets/guide.png');
+    background-size: 300px 300px;
     width: 300px;
     height: 300px;
   }

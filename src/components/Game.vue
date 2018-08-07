@@ -25,10 +25,12 @@
       :numberOfItem="game.numberOfItem"
       :money="game.money"
     />
-    <game-score-board
-      v-show="game.gameStatus === 'gameover'"
-    />
     <game-guide/>
+    <game-score-board
+      :gameStatus="game.gameStatus"
+      :isClear="game.isClear"
+      :totalScore="game.totalScore"
+    />
     <audio ref="bgm">
       <source src="../assets/audio/bgm_apeach.mp3" />
     </audio>
@@ -47,7 +49,6 @@ import GameBody from './GameBody'
 import GameFooter from './GameFooter'
 import GameScoreBoard from './GameScoreBoard'
 import GameGuide from './GameGuide'
-import GameOver from './GameOver'
 
 import Game from './Game/Game'
 
@@ -58,8 +59,7 @@ export default {
     'game-body': GameBody,
     'game-footer': GameFooter,
     'game-score-board': GameScoreBoard,
-    'game-guide': GameGuide,
-    'game-over': GameOver
+    'game-guide': GameGuide
   },
   data () {
     return {
@@ -81,6 +81,7 @@ export default {
       this.price = this.game.history[this.game.history.length - 1].price
     },
     readyAndStartGame () {
+      this.delay = 3
       let countdownInterval = setInterval(() => {
         this.delay -= 1
         this.playCountdownSound()
@@ -93,12 +94,12 @@ export default {
       }, 1000)
     },
     playBGM () {
+      this.$refs.bgm.currentTime = 0
       this.$refs.bgm.play()
     },
-    resetBGM () {
-      this.$refs.bgm.pause()
-      this.$refs.bgm.currentTime = 0
-    },
+    // resetBGM () {
+    //   this.$refs.bgm.pause()
+    // },
     playBtnClickSound () {
       this.$refs.btn_click_sound.play()
     },
@@ -108,6 +109,17 @@ export default {
   },
   created: function () {
     this.$EventBus.$on('playGame', () => {
+      this.isReadyShow = true
+      this.readyAndStartGame()
+    })
+    this.$EventBus.$on('nextStage', () => {
+      this.level += 1
+      this.game = new Game(this.level)
+      this.isReadyShow = true
+      this.readyAndStartGame()
+    })
+    this.$EventBus.$on('retryStage', () => {
+      this.game = new Game(this.level)
       this.isReadyShow = true
       this.readyAndStartGame()
     })
