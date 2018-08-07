@@ -48,19 +48,54 @@ export default{
     z-index: 9999;
     top: 0;
   }
-  .score-board-wrapper{
-    margin:30% auto;
-    width:80%;
-    height:60%;
-    background-image: url('../assets/score_board.png');
-    background-size: 300px 300px;
-    background-repeat: no-repeat;
+  @media (min-width:320px) {
+    .score-board-wrapper{
+      margin:30% auto;
+      width:80%;
+      height:60%;
+      background-image: url('../assets/score_board.png');
+      background-size: 250px 300px;
+      background-repeat: no-repeat;
+    }
+    .resultTitle{
+      font-size: 20px;
+      color: white;
+      padding-top: 42px;
+      text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    }
   }
-  .resultTitle{
-    font-size: 25px;
-    color: white;
-    padding-top: 37px;
-    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+  @media (min-width:375px){
+    .score-board-wrapper{
+      margin:30% auto;
+      width:80%;
+      height:60%;
+      background-image: url('../assets/score_board.png');
+      background-size: 300px 300px;
+      background-repeat: no-repeat;
+    }
+    .resultTitle{
+      font-size: 25px;
+      color: white;
+      padding-top: 37px;
+      text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    }
+  }
+  @media (min-width:414px){
+    .score-board-wrapper{
+      margin:30% auto;
+      width:80%;
+      height:60%;
+      background-image: url('../assets/score_board.png');
+      background-size: 350px 300px;
+      background-repeat: no-repeat;
+    }
+    .resultTitle{
+      font-size: 25px;
+      color: white;
+      padding-top: 37px;
+      padding-left: 20px;
+      text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    }
   }
   .score{
     font-size: 35px;

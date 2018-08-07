@@ -131,6 +131,7 @@ export default {
     })
     this.$EventBus.$on('retryStage', () => {
       this.game = new Game(this.level)
+      this.$EventBus.$emit('rerenderComponent');
       this.isReadyShow = true
       this.readyAndStartGame()
     })
