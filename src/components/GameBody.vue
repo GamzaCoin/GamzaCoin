@@ -25,7 +25,7 @@
       </div>
       <div class="item">
         <img :src="getImgUrl(itemImg)" :class="{spin: timeIndex > 0}"/>
-        <div class="market-price" :class="{up: fluctuation > 0, down: fluctuation < 0, zero: fluctuation === 0}"><span class="arrow"></span><span class="percent">{{fluctuation}}%</span></div>
+        <div class="market-price" :class="{up: fluctuation > 0, down: fluctuation < 0, zero: fluctuation === 0}">{{graph[timeIndex]}}</div>
       </div>
     </div>
   </div>
@@ -115,7 +115,7 @@ export default {
 
   .graph-wrapper {
     z-index: 600;
-    width: 80%;
+    width: 75%;
     height: 100%;
     overflow: hidden;
     position: relative;
@@ -143,7 +143,7 @@ export default {
     position:absolute;
     width: 50px;
     heigth: 50px;
-    left: 80%;
+    left: 75%;
     top: 56%;
     z-index: 601;
     transform: translateX(-50%);
@@ -164,24 +164,8 @@ export default {
     transform: translateY(-50%);
     font-size: 1.5em;
     white-space: nowrap;
-  }
-
-  .item .market-price .arrow {
-  }
-
-  .item .market-price.zero .arrow:after {
-    content: '-';
-  }
-
-  .item .market-price.up .arrow:after {
-    content: '▲';
-  }
-
-  .item .market-price.down .arrow:after {
-    content: '▼';
-  }
-
-  .item .market-price .percent {
+    color: #ffffff;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
   }
 
   .spin {
