@@ -26,6 +26,15 @@
       v-show="game.gameStatus === 'gameover'"
     />
     <game-guide/>
+    <audio ref="bgm">
+      <source src="../assets/audio/bgm_apeach.mp3" />
+    </audio>
+    <audio ref="btn_click_sound">
+      <source src="../assets/audio/btn_click.ogg" />
+    </audio>
+    <audio ref="countdown_sound">
+      <source src="../assets/audio/countdown.ogg" />
+    </audio>
   </div>
 </template>
 
@@ -69,15 +78,29 @@ export default {
       this.price = this.game.history[this.game.history.length - 1].price
     },
     readyAndStartGame () {
-      setInterval(() => {
+      let countdownInterval = setInterval(() => {
         this.delay -= 1
-        // console.log(this.delay)
+        this.playCountdownSound()
         if (this.delay === -1) {
+          this.playBGM()
           this.isReadyShow = false
           this.game.startGame()
-          // clearInterval(this.startGame)
+          clearInterval(countdownInterval)
         }
       }, 1000)
+    },
+    playBGM () {
+      this.$refs.bgm.play()
+    },
+    resetBGM () {
+      this.$refs.bgm.pause()
+      this.$refs.bgm.currentTime = 0
+    },
+    playBtnClickSound () {
+      this.$refs.btn_click_sound.play()
+    },
+    playCountdownSound () {
+      this.$refs.countdown_sound.play()
     }
   },
   created: function () {
