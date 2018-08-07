@@ -1,5 +1,9 @@
 <template>
   <footer class="game-footer">
+    <img class="riding-apeach" v-bind:style="{ left: (timeIndex / graphLength * 100) == 0 ? '-13%' : (timeIndex / graphLength * 100 - 15) + '%'}" src="./../assets/riding-apeach.png" alt="">
+    <div class="whole-distance">
+      <div class="remaining-distance" v-bind:style="{ width: (timeIndex / graphLength * 100) + '%' }"></div>
+    </div>
     <div class="game-info">
       <img class="money-img" src="./../assets/money.png" alt="">
       <span class="money">{{ money }}</span>
@@ -32,7 +36,7 @@
 
 export default {
   name: 'GameFooter',
-  props: ['level', 'onClickSellOrBuy', 'numberOfItem', 'money'],
+  props: ['graphLength', 'timeIndex', 'level', 'onClickSellOrBuy', 'numberOfItem', 'money'],
   data () {
     return {
     }
@@ -54,6 +58,33 @@ export default {
   right: 10%;
 }
 
+.riding-apeach {
+  width:20%;
+  position: absolute;
+  bottom: 120px;
+  z-index: 900;
+  left: 0%;
+}
+
+.whole-distance {
+  position: absolute;
+  background-color: black;
+  border-radius: 10px;
+  border: 1px solid black;
+  width: 100%;
+  height: 10px;
+  bottom: 7rem;
+  z-index: 900;
+}
+
+.remaining-distance {
+  background-color: yellow;
+  border-radius: 10px;
+  border: 1px solid black;
+  height: 10px;
+  bottom: 7rem;
+  z-index: 900;
+}
 .game-info {
   position: fixed;
   left: 5%;
