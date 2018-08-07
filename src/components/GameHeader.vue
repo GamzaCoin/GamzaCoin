@@ -112,9 +112,8 @@ export default {
 .apeach {
   top: 50%;
   left: 20%;
-  margin-left: 25%;
-  /* position:absolute; */
-  width: 80px;
+  margin-left: 175%;
+  width: 60px;
   padding: 1%;
   border: 3px solid #b29874;
   background-color: #b29874;
@@ -123,17 +122,17 @@ export default {
 }
 
 .full-percent {
-  /* position: absolute; */
   border: 1px solid grey;
   background-color: grey;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
-  padding: 3%;
+  padding: 2%;
   top: 30%;
   z-index:-1;
   width: 315%;
-  margin-top: -70%;
-  margin-left: 120%;
+  margin-top: -74%;
+  margin-left: 270%;
+  height: 18px
 }
 
 @media (max-width: 400px) and (min-width: 375px) {
@@ -160,9 +159,11 @@ export default {
   border-bottom-right-radius: 20px;
   /* margin-left: 20%; */
   margin-right: 50%;
+  height:16px
 }
 
 .percent-text {
+  font-size: 14px;
   font-weight: 600;
   color: #ffffff;
 }
