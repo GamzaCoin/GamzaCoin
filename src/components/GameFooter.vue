@@ -79,7 +79,7 @@ export default {
 
 .sellButton, .buyButton {
   position: fixed;
-  bottom: 3.5%;
+  bottom: 4%;
   left: 45%;
   background: #428aff;
   color: #ffffff;
