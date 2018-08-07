@@ -12,7 +12,7 @@
             :padding="0"
             :height="graphHeight"
             :width="distanceUnit * graphLength"
-            :radius="5"
+            :radius="8"
             :max="graph[0] + amplitude"
             :min="graph[0] - amplitude"
             smooth>
