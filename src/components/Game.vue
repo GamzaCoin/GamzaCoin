@@ -1,7 +1,7 @@
 <template>
   <div class="game">
     <div class="ready" v-show="isReadyShow">
-      <div class="goal">{{game.goalDesc}}</div>
+      <div class="goal">{{game.goalDesc}}</div><br><br>
       <div class="count" v-show="delay != 0">{{ delay }}</div>
       <div class="start" v-show="delay == 0">START</div>
     </div>
@@ -17,6 +17,8 @@
       :timeIndex="game.timeIndex"
       :graphLength="game.graph.graphLength"
       :itemImg="game.itemImg"
+      :numberOfItem="game.numberOfItem"
+      :history="game.history"
     />
     <game-footer
       v-on:onClickSellOrBuy="onClickSellOrBuy"

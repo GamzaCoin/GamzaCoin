@@ -89,6 +89,6 @@ export default {
 }
 
 .buyButton {
-  background: #f7931e;
+  background: #428aff;
 }
 </style>
