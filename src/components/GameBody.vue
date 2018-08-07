@@ -1,7 +1,7 @@
 <template>
   <div class="game-body">
     <div class="graph-container">
-      <div class="background"
+      <div v-bind:class="`background ${backgroundImage}`"
            v-bind:style="{ width: `calc(100% + ${distanceUnit * (graphLength - 1) / 2 + 100}px)`, transform: `translate(${-1 * distanceUnit * timeIndex / 2}px, ${graph[timeIndex] - graph[0]}px)`}"></div>
       <div class="graph-wrapper">
         <div class="graph"
@@ -39,7 +39,23 @@ export default {
       distanceUnit: 30,
       points: this.history.map(function (x) {
         return x
-      })
+      }),
+      backgroundImage: 'stage1'
+    }
+  },
+  watch: {
+    level: function (val) {
+      switch (val) {
+        case 2 :
+          this.backgroundImage = 'stage2'
+          break
+        case 3 :
+          this.backgroundImage = 'stage3'
+          break
+        default :
+          this.backgroundImage = 'stage1'
+          break
+      }
     }
   },
   methods: {
@@ -87,6 +103,9 @@ export default {
     -o-transition: transform 0.5s ease;
     transition: transform 0.5s ease;
   }
+  .stage1 {  background-image: url('../assets/background/stage1.png');  }
+  .stage2 {  background-image: url('../assets/background/stage2.png');  }
+  .stage3 {  background-image: url('../assets/background/stage3.png');  }
 
   .graph-wrapper {
     z-index: 600;
