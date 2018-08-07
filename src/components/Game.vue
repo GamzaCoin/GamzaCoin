@@ -41,6 +41,9 @@
     <audio ref="countdown_sound">
       <source src="../assets/audio/countdown.ogg" />
     </audio>
+    <audio ref=sell_buy_sound>
+      <source src="../assets/audio/countdown.ogg" />
+    </audio>
   </div>
 </template>
 
@@ -73,12 +76,16 @@ export default {
   },
   methods: {
     onClickSellOrBuy: function (price) {
+      let re = true
       if (this.game.numberOfItem === 0) {
-        this.game.buy()
+        re = this.game.buy()
       } else {
-        this.game.sell()
+        re = this.game.sell()
       }
-      this.price = this.game.history[this.game.history.length - 1].price
+      if (re) {
+        this.price = this.game.history[this.game.history.length - 1].price
+        this.playSellBuySound()
+      }
     },
     readyAndStartGame () {
       this.delay = 3
@@ -105,6 +112,9 @@ export default {
     },
     playCountdownSound () {
       this.$refs.countdown_sound.play()
+    },
+    playSellBuySound () {
+      this.$refs.sell_buy_sound.play()
     }
   },
   created: function () {
