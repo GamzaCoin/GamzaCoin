@@ -19,7 +19,7 @@
           </trend>
           <div class="guide-line" v-show="numberOfItem" :style="{width: `${distanceUnit * graphLength}px`, transform:`translate(0, ${history.length ? (graphData[0] - history[history.length - 1].price) / amplitude * graphHeight / 2 + graphHeight / 2: 0}px)`}"></div>
           <div ref="point_list" class="point-list">
-            <div v-for="(point, index) in history" :key="index" class="point" :style="{backgroundColor: `${point.type === 'buy' ? '#ffffff' : '#ffffff'}`, left: `${distanceUnit * point.timeIndex}px`, top: `${history.length ? (graphData[0] - point.price) / amplitude * graphHeight / 2 + graphHeight / 2: 0}px`}">a</div>
+            <div v-for="(point, index) in history" :key="index" class="point" :style="{backgroundColor: `${point.type === 'buy' ? '#428aff' : '#ff686e'}`, left: `${distanceUnit * point.timeIndex}px`, top: `${history.length ? (graphData[0] - point.price) / amplitude * graphHeight / 2 + graphHeight / 2: 0}px`}"></div>
           </div>
         </div>
       </div>
@@ -141,10 +141,10 @@ export default {
   }
 
   .guide-line {
-    height: 5px;
+    height: 2px;
     left: 0;
     top: 0;
-    background-color: aqua;
+    border-bottom: 3px dashed #999999;
     position: absolute;
   }
 
@@ -158,7 +158,6 @@ export default {
     width: 25px;
     height: 25px;
     border-radius: 50px;
-    background-color: #dddddd;
     position: absolute;
     transform: translate(-50%, -50%);
     z-index: 6002;
