@@ -41,6 +41,9 @@
     <audio ref="countdown_sound">
       <source src="../assets/audio/countdown.ogg" />
     </audio>
+    <audio ref=sell_buy_sound>
+      <source src="../assets/audio/countdown.ogg" />
+    </audio>
   </div>
 </template>
 
@@ -73,12 +76,16 @@ export default {
   },
   methods: {
     onClickSellOrBuy: function (price) {
+      let re = true
       if (this.game.numberOfItem === 0) {
-        this.game.buy()
+        re = this.game.buy()
       } else {
-        this.game.sell()
+        re = this.game.sell()
       }
-      this.price = this.game.history[this.game.history.length - 1].price
+      if (re) {
+        this.price = this.game.history[this.game.history.length - 1].price
+        this.playSellBuySound()
+      }
     },
     readyAndStartGame () {
       this.delay = 3
@@ -105,6 +112,9 @@ export default {
     },
     playCountdownSound () {
       this.$refs.countdown_sound.play()
+    },
+    playSellBuySound () {
+      this.$refs.sell_buy_sound.play()
     }
   },
   created: function () {
@@ -145,7 +155,7 @@ game-footer {
 .goal {
   color: black;
   text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
-  font-size: 170%;
+  font-size: 150%;
   /* width: 100%; */
   margin-top: 60%;
   font-weight: 700;
@@ -153,19 +163,19 @@ game-footer {
 
 @media (max-width: 400px) and (min-width: 375px) {
   .goal {
-    font-size: 160%;
+    font-size: 140%;
   }
 }
 
 @media (max-width: 374px) and (min-width: 350px) {
   .goal {
-    font-size: 150%;
+    font-size: 135%;
   }
 }
 
 @media (max-width: 349px) and (min-width: 320px) {
   .goal {
-    font-size: 140%;
+    font-size: 120%;
   }
 }
 
@@ -179,7 +189,7 @@ game-footer {
 .start {
   color: black;
   font-size: 100px;
-  text-shadow: -2px 0 #efcf00, 0 2px #efcf00, 2px 0 #efcf00, 0 -2px #efcf00;
+  text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
   width: 100%;
   margin: 0 auto;
 }

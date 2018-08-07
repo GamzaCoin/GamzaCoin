@@ -19,6 +19,7 @@ export default class Game {
     this.gameStatus = 'ready';
     this.isClear = null;
     this.totalScore = 0;
+    this.lock = false;
   }
 
   sellAt(price) {
@@ -37,25 +38,39 @@ export default class Game {
   }
 
   sell() {
+    if(this.lock)
+      return false;
     if(this.gameStatus !== 'play')
-      return;
+      return false;
     if(!this.numberOfItem)
-      return;
+      return false;
     let price = this.graph.graphData[this.timeIndex] || this.graph.graphData[this.timeIndex];
     this.money = Math.round(this.numberOfItem * price);
     this.numberOfItem = 0;
     this.history.push({type: 'sell', timeIndex: this.timeIndex, price: price, numberOfItem: this.numberOfItem, money: this.money})
+    this.lock = true;
+    setTimeout(() => {
+      this.lock = false;
+    }, 500);
+    return true;
   }
 
   buy() {
+    if(this.lock)
+      return false;
     if(this.gameStatus !== 'play')
-      return;
+      return false;
     if(!this.money)
-      return;
+      return false;
     let price = this.graph.graphData[this.timeIndex] || this.graph.graphData[this.timeIndex];
     this.numberOfItem = Math.round(this.money / price * 10) / 10;
     this.money = 0;
     this.history.push({type: 'buy', timeIndex: this.timeIndex, price: price, numberOfItem: this.numberOfItem, money: this.money})
+    this.lock = true;
+    setTimeout(() => {
+      this.lock = false;
+    }, 500);
+    return true;
   }
 
   startGame() {

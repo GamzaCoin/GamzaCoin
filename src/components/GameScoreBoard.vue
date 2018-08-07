@@ -8,16 +8,6 @@
       <div class="score">
         {{this.totalScore}}
       </div>
-      <!--<div class="log">-->
-      <!--<div class="content-wrapper">-->
-      <!--<div class="type" style="color:red;">판매</div>-->
-      <!--<div class="price">427원</div>-->
-      <!--</div>-->
-      <!--<div class="content-wrapper">-->
-      <!--<div class="type" style="color:blue;">구매</div>-->
-      <!--<div class="price">488원</div>-->
-      <!--</div>-->
-      <!--</div>-->
       <div class="button">
         <button class="check-button" style="background-color:#FFCC00" v-on:click="$router.push('/')">홈으로</button>
         <button v-if="this.isClear" class="check-button" style="background-color:#003458" v-on:click="nextStage">진행하기</button>
