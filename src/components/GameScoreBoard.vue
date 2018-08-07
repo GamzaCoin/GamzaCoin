@@ -10,7 +10,7 @@
       </div>
       <div class="button">
         <button class="check-button" style="background-color:#FFCC00" v-on:click="$router.push('/')">홈으로</button>
-        <div v-if="this.level < this.lastLevel">
+        <div v-if="isNextButtonShow">
           <button v-if="this.isClear" class="check-button" style="background-color:#003458" v-on:click="nextStage">다음단계</button>
           <button v-else class="check-button" v-on:click="retryStage">다시하기</button>
         </div>
@@ -32,7 +32,7 @@ export default{
   },
   computed: {
     isNextButtonShow () {
-      return (this.level < this.lastLevel) && (this.isClear)
+      return (this.level < this.lastLevel) || (!this.isClear)
     }
   },
   methods: {
