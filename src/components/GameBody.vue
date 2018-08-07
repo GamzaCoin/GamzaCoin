@@ -17,6 +17,7 @@
             :min="graphData[0] - amplitude"
             smooth>
           </trend>
+          <div class="guide-line" v-show="numberOfItem" :style="{width: `${distanceUnit * graphLength}px`, transform:`translate(0, ${history[history.length -1].price / amplitude * graphHeight / 2}px)`}"></div>
         </div>
       </div>
       <div class="item"><img :src="getImgUrl(itemImg)" :class="{spin: timeIndex > 0}"/></div>
@@ -27,7 +28,7 @@
 <script>
 export default {
   name: 'GameBody',
-  props: ['level', 'graph', 'graphLength', 'timeIndex', 'itemImg'],
+  props: ['level', 'graph', 'graphLength', 'timeIndex', 'itemImg', 'numberOfItem', 'history'],
   data () {
     return {
       graphData: this.graph,
@@ -131,6 +132,14 @@ export default {
     to {
       transform:rotate(360deg);
     }
+  }
+
+  .guide-line {
+    height: 5px;
+    left: 0;
+    top: 0;
+    background-color: aqua;
+    position: absolute;
   }
 
 </style>
