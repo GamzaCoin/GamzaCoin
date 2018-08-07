@@ -81,8 +81,8 @@ export default class Game {
   }
 
   showScoreBoard() {
-    let currentPrice = this.graph.graphData[this.timeIndex + 1] || this.graph.graphData[this.timeIndex];
-    const worth = this.money + this.numberOfItem * currentPrice;
+    const currentPrice = this.graph.graphData[this.timeIndex + 1] || this.graph.graphData[this.timeIndex];
+    const worth = Math.round(this.money + this.numberOfItem * currentPrice);
     this.isClear = worth >= this.goal;
     this.totalScore = worth;
     this.gameStatus = 'gameover';
