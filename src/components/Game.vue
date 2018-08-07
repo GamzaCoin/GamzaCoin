@@ -25,6 +25,8 @@
       :numberOfItem="game.numberOfItem"
       :money="game.money"
       :level="game.level"
+      :graphLength="game.graph.graphLength"
+      :timeIndex="game.timeIndex"
     />
     <game-guide/>
     <game-score-board
