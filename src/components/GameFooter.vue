@@ -4,20 +4,26 @@
       <img class="money-img" src="./../assets/money.png" alt="">
       <span class="money">{{ money }}</span>
       <div></div>
-      <img class="item-img" src="./../assets/gamza.png" alt="">
+      <img v-show="level === 1" class="item-img" src="./../assets/gamza.png" alt="">
+      <img v-show="level === 2" class="item-img" src="./../assets/tomato.png" alt="">
+      <img v-show="level === 3" class="item-img" src="./../assets/brocoli.png" alt="">
       <span class="items">{{ numberOfItem }}</span>
     </div>
     <button
       v-if="money==0"
       class="sellButton"
       @click="onClickBtn">
-      <span>모든 감자 팔기</span>
+      <span v-show="level === 1">모든 감자 팔기</span>
+      <span v-show="level === 2">모든 토마토 팔기</span>
+      <span v-show="level === 3">모든 브로콜리 팔기</span>
     </button>
     <button
       v-if="numberOfItem==0"
       class="buyButton"
       @click="onClickBtn">
-      <span>모든 감자 사기</span>
+      <span v-show="level === 1">모든 감자 사기</span>
+      <span v-show="level === 2">모든 토마토 사기</span>
+      <span v-show="level === 3">모든 브로콜리 사기</span>
     </button>
   </footer>
 </template>
@@ -26,7 +32,7 @@
 
 export default {
   name: 'GameFooter',
-  props: ['onClickSellOrBuy', 'numberOfItem', 'money'],
+  props: ['level', 'onClickSellOrBuy', 'numberOfItem', 'money'],
   data () {
     return {
     }

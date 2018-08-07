@@ -62,7 +62,7 @@
         <div
           class="percent"
           v-show="(price * numberOfItem + money) / goal * 100 >= 100"
-          v-bind:style="{ width: 100+'%', backgroundColor: 'black'}">
+          v-bind:style="{ width: '100%', backgroundColor: 'black'}">
           <span
             v-bind:style="{ color: 'white' }"
             class="percent-text">

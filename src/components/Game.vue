@@ -22,6 +22,7 @@
       v-on:onClickSellOrBuy="onClickSellOrBuy"
       :numberOfItem="game.numberOfItem"
       :money="game.money"
+      :level="game.level"
     />
     <game-guide/>
     <game-score-board
@@ -70,7 +71,6 @@ export default {
   },
   methods: {
     onClickSellOrBuy: function (price) {
-      console.log('in onClickSellOrBuy', this.game)
       if (this.game.numberOfItem === 0) {
         this.game.buy()
       } else {

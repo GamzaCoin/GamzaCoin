@@ -83,7 +83,6 @@ class Frame {
         if(this.startDirection * Math.pow(-1, i + 1) * (tempHeight[i] - tempHeight[i - 1]) < 0.15)
           continue;
         difficulty += (this.framePoint[i].x - this.framePoint[i - 1].x) * (tempHeight[i] - tempHeight[i - 1]);
-        console.log('shit');
         i++;
       }
 
@@ -147,7 +146,6 @@ class Noise {
     } while(this.scoreRange[0] > bestScore || bestScore > this.scoreRange[1]);
 
     this.noise = noise;
-    console.log(bestScore, noise);
   }
 
   getBestScore(n) {
