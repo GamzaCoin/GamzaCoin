@@ -18,8 +18,8 @@
             smooth>
           </trend>
           <div class="guide-line" v-show="numberOfItem" :style="{width: `${distanceUnit * graphLength}px`, transform:`translate(0, ${history.length ? (graphData[0] - history[history.length - 1].price) / amplitude * graphHeight / 2 + graphHeight / 2: 0}px)`}"></div>
-          <div ref="point_list" class="point-list">
-            <div v-for="(point, index) in history" :key="index" class="point" :style="{backgroundColor: `${point.type === 'buy' ? '#428aff' : '#ff686e'}`, left: `${distanceUnit * point.timeIndex}px`, top: `${history.length ? (graphData[0] - point.price) / amplitude * graphHeight / 2 + graphHeight / 2: 0}px`}"></div>
+          <div class="point-list">
+            <div v-for="(point, index) in history" :key="index" class="point" :style="{backgroundColor: `${point.type === 'buy' ? '#ff686e' : '#428aff'}`, left: `${distanceUnit * point.timeIndex}px`, top: `${history.length ? (graphData[0] - point.price) / amplitude * graphHeight / 2 + graphHeight / 2: 0}px`}"></div>
           </div>
         </div>
       </div>
@@ -52,6 +52,12 @@ export default {
     amplitude () {
       return Math.max(Math.abs(this.graphData[0] - Math.max.apply(null, this.graphData)), Math.abs(this.graphData[0] - Math.min.apply(null, this.graphData))) + 10
     }
+  },
+  created: function() {
+    this.$EventBus.$on('rerenderComponent', () => {
+      console.log('rerender');
+      Object.assign(this.$data, this.$options.data());
+    })
   }
 }
 </script>
