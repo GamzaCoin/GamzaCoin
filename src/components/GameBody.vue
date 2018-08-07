@@ -2,24 +2,24 @@
   <div class="game-body">
     <div class="graph-container">
       <div class="background"
-           v-bind:style="{ width: `calc(100% + ${distanceUnit * (graphLength - 1) / 2 + 100}px)`, transform: `translate(${-1 * distanceUnit * timeIndex / 2}px, ${graphData[timeIndex] - graphData[0]}px)`}"></div>
+           v-bind:style="{ width: `calc(100% + ${distanceUnit * (graphLength - 1) / 2 + 100}px)`, transform: `translate(${-1 * distanceUnit * timeIndex / 2}px, ${graph[timeIndex] - graph[0]}px)`}"></div>
       <div class="graph-wrapper">
         <div class="graph"
-             :style="`transform: translate(${-1 * distanceUnit * timeIndex}px, ${(graphData[timeIndex] - graphData[0]) / amplitude * graphHeight / 2}px)`">
+             :style="`transform: translate(${-1 * distanceUnit * timeIndex}px, ${(graph[timeIndex] - graph[0]) / amplitude * graphHeight / 2}px)`">
           <trend
-            :data="graphData"
+            :data="graph"
             :gradient="['black']"
             :padding="0"
             :height="graphHeight"
             :width="distanceUnit * graphLength"
             :radius="5"
-            :max="graphData[0] + amplitude"
-            :min="graphData[0] - amplitude"
+            :max="graph[0] + amplitude"
+            :min="graph[0] - amplitude"
             smooth>
           </trend>
-          <div class="guide-line" v-show="numberOfItem" :style="{width: `${distanceUnit * graphLength}px`, transform:`translate(0, ${history.length ? (graphData[0] - history[history.length - 1].price) / amplitude * graphHeight / 2 + graphHeight / 2: 0}px)`}"></div>
+          <div class="guide-line" v-show="numberOfItem" :style="{width: `${distanceUnit * graphLength}px`, transform:`translate(0, ${history.length ? (graph[0] - history[history.length - 1].price) / amplitude * graphHeight / 2 + graphHeight / 2: 0}px)`}"></div>
           <div class="point-list">
-            <div v-for="(point, index) in history" :key="index" class="point" :style="{backgroundColor: `${point.type === 'buy' ? '#ff686e' : '#428aff'}`, left: `${distanceUnit * point.timeIndex}px`, top: `${history.length ? (graphData[0] - point.price) / amplitude * graphHeight / 2 + graphHeight / 2: 0}px`}"></div>
+            <div v-for="(point, index) in history" :key="index" class="point" :style="{backgroundColor: `${point.type === 'buy' ? '#ff686e' : '#428aff'}`, left: `${distanceUnit * point.timeIndex}px`, top: `${history.length ? (graph[0] - point.price) / amplitude * graphHeight / 2 + graphHeight / 2: 0}px`}"></div>
           </div>
         </div>
       </div>
@@ -34,7 +34,6 @@ export default {
   props: ['level', 'graph', 'graphLength', 'timeIndex', 'itemImg', 'numberOfItem', 'history'],
   data () {
     return {
-      graphData: this.graph,
       graphHeight: 800,
       intervalID: 0,
       distanceUnit: 30,
@@ -49,8 +48,8 @@ export default {
     }
   },
   computed: {
-    amplitude () {
-      return Math.max(Math.abs(this.graphData[0] - Math.max.apply(null, this.graphData)), Math.abs(this.graphData[0] - Math.min.apply(null, this.graphData))) + 10
+    amplitude: function () {
+      return Math.max(Math.abs(this.graph[0] - Math.max.apply(null, this.graph)), Math.abs(this.graph[0] - Math.min.apply(null, this.graph))) + 10
     }
   },
   created: function () {

@@ -74,10 +74,10 @@ class Frame {
   initFramePointY() {
     let tempHeight = new Array(this.numberOfPoints).fill(0);
     let difficulty;
+    let limit = 800;
     do {
       difficulty = 0;
       let i = 1;
-      let limit = 0;
       while(i < this.numberOfPoints) {
         tempHeight[i] = Math.round((Math.random() * 2 - 1) * 100) / 100;
         if(this.startDirection * Math.pow(-1, i + 1) * (tempHeight[i] - tempHeight[i - 1]) < 0.15)
@@ -86,9 +86,8 @@ class Frame {
         i++;
       }
 
-      if(limit < 800)
+      if(limit-- < 0)
         break;
-      limit++;
       /*
       for(i = 0; i < 20; i++) {
         if (difficulty < this.difficultyRange[0]) {
@@ -132,6 +131,7 @@ class Noise {
     let noise = new Array(this.numberOfNoisePoint);
     let i;
     let bestScore = 0;
+    let limit = 800;
     do {
       for(i = this.noiseLength - 1; i < this.numberOfNoisePoint; i += this.noiseLength) {
         noise[i] = Math.round((Math.random() * 2 - 1) * this.strength * 1000) / 1000;
@@ -143,6 +143,8 @@ class Noise {
 
       bestScore = this.getBestScore(noise);
 
+      if(limit-- < 800)
+        break;
     } while(this.scoreRange[0] > bestScore || bestScore > this.scoreRange[1]);
 
     this.noise = noise;
