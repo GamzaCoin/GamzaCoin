@@ -128,6 +128,7 @@ class Noise {
   }
 
   makeNoise() {
+    console.log(this, this.numberOfNoisePoint);
     let noise = new Array(this.numberOfNoisePoint);
     let i;
     let bestScore = 0;

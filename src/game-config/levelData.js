@@ -2,7 +2,7 @@
 export const levelData = [
   {
     level: 1,
-    startMoney: 1000,
+    startMoney: 10000,
     GraphData: {
       startPrice: 300,
       maximumChange: 100,
@@ -20,14 +20,14 @@ export const levelData = [
     goal: 1300,
   }, {
     level: 2,
-    startMoney: 2000,
+    startMoney: 20000,
     GraphData: {
       startPrice: 300,
       maximumChange: 100,
-      graphLength: 105,
+      graphLength: 10,
       frameDifficultyRange: [18, 24],
       frameStartDirection: 1,
-      numberOfFramePoints: 6,
+      numberOfFramePoints: 5,
       noiseLength: 1,
       noiseStrength: 0.25,
       noiseScoreRange: [0.8, 1.0],
@@ -42,10 +42,10 @@ export const levelData = [
     GraphData: {
       startPrice: 400,
       maximumChange: 100,
-      graphLength: 105,
+      graphLength: 10,
       frameDifficultyRange: [12, 18],
       frameStartDirection: 1,
-      numberOfFramePoints: 7,
+      numberOfFramePoints: 5,
       noiseLength: 1,
       noiseStrength: 0.3,
       noiseScoreRange: [0.8, 1.0],

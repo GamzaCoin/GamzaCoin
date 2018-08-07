@@ -57,7 +57,7 @@ export default {
 .game-info {
   position: fixed;
   left: 5%;
-  bottom: 0%;
+  bottom: 1.5%;
   text-align: left;
   z-index: 1000;
 }
@@ -79,18 +79,19 @@ export default {
 
 .sellButton, .buyButton {
   position: fixed;
-  bottom: 4%;
+  bottom: 2.5%;
   left: 45%;
   background: #428aff;
   color: #ffffff;
   text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
   border: 3px solid black;
   border-radius: 20px;
-  font-size: 120%;
+  font-size: 1.7em;
   font-weight: 600;
   width: 50%;
-  padding: 1.5%;
-  z-index: 1000;
+  padding: 2.4% 1.5% 1.5% 1.5%;
+  z-index: 1005;
+  height: 85px;
   cursor: pointer;
 }
 
