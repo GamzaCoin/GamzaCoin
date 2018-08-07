@@ -55,8 +55,8 @@ export default {
   },
   created: function() {
     this.$EventBus.$on('rerenderComponent', () => {
-      console.log('rerender');
-      Object.assign(this.$data, this.$options.data());
+      console.log('rerender')
+      Object.assign(this.$data, this.$options.data.apply(this))
     })
   }
 }
