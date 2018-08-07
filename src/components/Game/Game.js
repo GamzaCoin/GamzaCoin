@@ -4,6 +4,7 @@ import {levelData} from '../../game-config/levelData'
 /* eslint-disable */
 export default class Game {
   constructor(level) {
+    this.lastLevel = 3;
     this.level = level;
     this.goal = levelData[level - 1].goal;
     this.goalDesc = levelData[level - 1].goalDesc;
