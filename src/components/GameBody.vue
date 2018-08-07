@@ -23,7 +23,10 @@
           </div>
         </div>
       </div>
-      <div class="item"><img :src="getImgUrl(itemImg)" :class="{spin: timeIndex > 0}"/></div>
+      <div class="item">
+        <img :src="getImgUrl(itemImg)" :class="{spin: timeIndex > 0}"/>
+        <div class="market-price" :class="{up: fluctuation > 0, down: fluctuation < 0, zero: fluctuation === 0}">{{graph[timeIndex]}}</div>
+      </div>
     </div>
   </div>
 </template>
@@ -66,6 +69,9 @@ export default {
   computed: {
     amplitude: function () {
       return Math.max(Math.abs(this.graph[0] - Math.max.apply(null, this.graph)), Math.abs(this.graph[0] - Math.min.apply(null, this.graph))) + 10
+    },
+    fluctuation: function () {
+      return this.timeIndex ? Math.round((this.graph[this.timeIndex] - this.graph[this.timeIndex - 1]) / this.graph[this.timeIndex - 1] * 1000) / 10 : 0
     }
   },
   created: function () {
@@ -109,7 +115,7 @@ export default {
 
   .graph-wrapper {
     z-index: 600;
-    width: 80%;
+    width: 75%;
     height: 100%;
     overflow: hidden;
     position: relative;
@@ -137,7 +143,7 @@ export default {
     position:absolute;
     width: 50px;
     heigth: 50px;
-    left: 80%;
+    left: 75%;
     top: 56%;
     z-index: 601;
     transform: translateX(-50%);
@@ -146,6 +152,20 @@ export default {
   .item img {
     width: 100%;
     height: 100%;
+  }
+
+  .item .market-price {
+    position: absolute;
+    width: 50px;
+    top: 50%;
+    left: calc(100% + 5px);
+    z-index: 601;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    font-size: 1.5em;
+    white-space: nowrap;
+    color: #ffffff;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
   }
 
   .spin {

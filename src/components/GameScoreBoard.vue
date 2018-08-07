@@ -103,7 +103,7 @@ export default{
       text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
     }
   }
-  @media (min-width:475px){
+  @media (min-width:495px){
     .score-board-wrapper{
       margin:30% auto;
       width:80%;
@@ -116,7 +116,7 @@ export default{
       font-size: 25px;
       color: white;
       padding-top: 14.5%;
-      padding-bottom: 5%;
+      padding-bottom: 4%;
       text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
     }
   }
