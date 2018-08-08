@@ -13,7 +13,7 @@ export default class Game {
     this.money = levelData[level - 1].startMoney;
     this.numberOfItem = 0;
     this.timeIndex = 0;
-    this.timeUnit = 500;
+    this.timeUnit = levelData[level - 1].timeUnit;
     this.interval = null;
     this.graph = new Graph(levelData[level - 1].GraphData);
     this.history = [];
