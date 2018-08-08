@@ -103,11 +103,16 @@ export default {
     z-index: 100;
     top:-25%;
 
-    -webkit-transition: transform 0.5s ease;
-    -moz-transition: transform 0.5s ease;
-    -ms-transition: transform 0.5s ease;
-    -o-transition: transform 0.5s ease;
-    transition: transform 0.5s ease;
+    /*-webkit-transition: transform 0.5s ease;*/
+    /*-moz-transition: transform 0.5s ease;*/
+    /*-ms-transition: transform 0.5s ease;*/
+    /*-o-transition: transform 0.5s ease;*/
+    /*transition: transform 0.5s ease;*/
+    -webkit-transition: transform 0.5s (0.4, 0.4, 0.8, 1);
+    -moz-transition: transform 0.5s (0.4, 0.4, 0.8, 1);
+    -ms-transition: transform 0.5s (0.4, 0.4, 0.8, 1);
+    -o-transition: transform 0.5s (0.4, 0.4, 0.8, 1);
+    transition: transform 0.5s (0.4, 0.4, 0.8, 1);
   }
   .stage1 {  background-image: url('../assets/background/stage1.png');  }
   .stage2 {  background-image: url('../assets/background/stage2.png');  }
@@ -127,11 +132,16 @@ export default {
     height: 100%;
     width: 100%;
     left: 100%;
-    -webkit-transition: transform 0.5s ease;
-    -moz-transition: transform 0.5s ease;
-    -ms-transition: transform 0.5s ease;
-    -o-transition: transform 0.5s ease;
-    transition: transform 0.5s ease;
+    /*-webkit-transition: transform 0.5s ease;*/
+    /*-moz-transition: transform 0.5s ease;*/
+    /*-ms-transition: transform 0.5s ease;*/
+    /*-o-transition: transform 0.5s ease;*/
+    /*transition: transform 0.5s ease;*/
+    -webkit-transition: transform 0.5s (0.4, 0.4, 0.8, 1);
+    -moz-transition: transform 0.5s (0.4, 0.4, 0.8, 1);
+    -ms-transition: transform 0.5s (0.4, 0.4, 0.8, 1);
+    -o-transition: transform 0.5s (0.4, 0.4, 0.8, 1);
+    transition: transform 0.5s (0.4, 0.4, 0.8, 1);
   }
 
   .graph svg path {
