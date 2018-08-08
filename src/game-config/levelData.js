@@ -36,7 +36,7 @@ export const levelData = [
     },
     itemName: '토마토',
     itemImg: 'tomato.png',
-    goalDesc: "토마토를 팔아서, 1,500원을 만드세요!",
+    goalDesc: "토마토를 팔아서, 1,400원을 만드세요!",
     goal: 1400,
   }, {
     level: 3,
