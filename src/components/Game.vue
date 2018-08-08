@@ -20,6 +20,7 @@
       :itemImg="game.itemImg"
       :numberOfItem="game.numberOfItem"
       :history="game.history"
+      :timeUnit="game.timeUnit"
     />
     <game-footer
       v-on:onClickSellOrBuy="onClickSellOrBuy"
