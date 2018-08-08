@@ -20,6 +20,7 @@
       :itemImg="game.itemImg"
       :numberOfItem="game.numberOfItem"
       :history="game.history"
+      :timeUnit="game.timeUnit"
     />
     <game-footer
       v-on:onClickSellOrBuy="onClickSellOrBuy"
@@ -72,8 +73,8 @@ export default {
   },
   data () {
     return {
-      level: 1,
-      game: new Game(1),
+      level: 3,
+      game: new Game(3),
       isReadyShow: false,
       delay: 3,
       price: 0

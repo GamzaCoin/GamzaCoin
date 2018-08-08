@@ -13,7 +13,7 @@ export default class Game {
     this.money = levelData[level - 1].startMoney;
     this.numberOfItem = 0;
     this.timeIndex = 0;
-    this.timeUnit = 500;
+    this.timeUnit = levelData[level - 1].timeUnit;
     this.interval = null;
     this.graph = new Graph(levelData[level - 1].GraphData);
     this.history = [];
@@ -39,6 +39,8 @@ export default class Game {
   }
 
   sell() {
+    if(this.history.length > 0 && this.timeIndex === this.history[this.history.length - 1].timeIndex)
+      return false;
     if(this.lock)
       return false;
     if(this.gameStatus !== 'play')
@@ -52,11 +54,13 @@ export default class Game {
     this.lock = true;
     setTimeout(() => {
       this.lock = false;
-    }, 500);
+    }, 100);
     return true;
   }
 
   buy() {
+    if(this.history.length > 0 && this.timeIndex === this.history[this.history.length - 1].timeIndex)
+      return false;
     if(this.lock)
       return false;
     if(this.gameStatus !== 'play')
@@ -70,7 +74,7 @@ export default class Game {
     this.lock = true;
     setTimeout(() => {
       this.lock = false;
-    }, 500);
+    }, 100);
     return true;
   }
 

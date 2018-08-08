@@ -78,30 +78,38 @@ export default {
 .riding-apeach {
   width:15%;
   position: absolute;
-  bottom: 7.8rem;
-  z-index: 900;
+  bottom: calc(3% + 127px);
+  z-index: 902;
   left: 0%;
+  -webkit-transition: left 0.5s ease;
+  -moz-transition: left 0.5s ease;
+  -ms-transition: left 0.5s ease;
+  -o-transition: left 0.5s ease;
+  transition: left 0.5s ease;
 }
 
 .whole-distance {
   position: absolute;
-  background-color: black;
+  background-color: rgba(0,0,0,0.5);
   border-radius: 10px;
-  border: 1px solid black;
+  /*border: 1px solid black;*/
   width: 100%;
   height: 10px;
-  bottom: 7rem;
+  bottom: calc(3% + 120px);
   z-index: 900;
   /* opacity: 0.7; */
 }
 
 .progress-distance {
-  background-color: yellow;
+  background-color: #e2cf38;
   border-radius: 10px;
-  border: 1px solid black;
+  /*border: 1px solid black;*/
   height: 10px;
-  bottom: 7rem;
-  z-index: 900;
+  -webkit-transition: width 0.5s ease;
+  -moz-transition: width 0.5s ease;
+  -ms-transition: width 0.5s ease;
+  -o-transition: width 0.5s ease;
+  transition: width 0.5s ease;
 }
 .game-info {
   position: fixed;

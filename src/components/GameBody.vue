@@ -1,18 +1,22 @@
 <template>
   <div class="game-body">
     <div class="graph-container">
-      <div v-bind:class="`background ${backgroundImage}`"
-           v-bind:style="{ width: `calc(100% + ${distanceUnit * (graphLength - 1) / 2 + 100}px)`, transform: `translate(${-1 * distanceUnit * timeIndex / 2}px, ${graph[timeIndex] - graph[0]}px)`}"></div>
+      <div v-bind:class="`background stage${level}`"
+           v-bind:style="{ width: `calc(100% + ${distanceUnit * (graphLength - 1) / 2 + 100}px)`, transform: `translate(${-1 * distanceUnit * timeIndex / 2}px, ${graph[timeIndex] - graph[0]}px)`, transitionDuration: `${timeUnit / 1000 * 0.7 }s`}"></div>
       <div class="graph-wrapper">
         <div class="graph"
-             :style="{transform: `translate(${-1 * distanceUnit * timeIndex}px, ${(graph[timeIndex] - graph[0]) / amplitude * graphHeight / 2}px)`, top: `calc(50vh - ${graphHeight / 2}px)`}">
+             :style="{
+                transform: `translate(${-1 * distanceUnit * timeIndex}px, ${(graph[timeIndex] - graph[0]) / amplitude * graphHeight / 2}px)`,
+                top: `calc(50vh - ${graphHeight / 2}px)`,
+                transitionDuration: `${timeUnit / 1000 * 0.7 }s`
+        }">
           <trend
             :data="graph"
             :gradient="['black']"
             :padding="0"
             :height="graphHeight"
             :width="distanceUnit * graphLength"
-            :radius="5"
+            :radius="8"
             :max="graph[0] + amplitude"
             :min="graph[0] - amplitude"
             smooth>
@@ -34,7 +38,7 @@
 <script>
 export default {
   name: 'GameBody',
-  props: ['level', 'graph', 'graphLength', 'timeIndex', 'itemImg', 'numberOfItem', 'history'],
+  props: ['level', 'graph', 'graphLength', 'timeIndex', 'itemImg', 'numberOfItem', 'history', 'timeUnit'],
   data () {
     return {
       graphHeight: 800,
@@ -48,6 +52,7 @@ export default {
   },
   watch: {
     level: function (val) {
+      console.log('watch level: ', val)
       switch (val) {
         case 2 :
           this.backgroundImage = 'stage2'
@@ -103,16 +108,12 @@ export default {
     z-index: 100;
     top:-25%;
 
-    /*-webkit-transition: transform 0.5s ease;*/
-    /*-moz-transition: transform 0.5s ease;*/
-    /*-ms-transition: transform 0.5s ease;*/
-    /*-o-transition: transform 0.5s ease;*/
-    /*transition: transform 0.5s ease;*/
-    -webkit-transition: transform 0.5s (0.4, 0.4, 0.8, 1);
-    -moz-transition: transform 0.5s (0.4, 0.4, 0.8, 1);
-    -ms-transition: transform 0.5s (0.4, 0.4, 0.8, 1);
-    -o-transition: transform 0.5s (0.4, 0.4, 0.8, 1);
-    transition: transform 0.5s (0.4, 0.4, 0.8, 1);
+    -webkit-transition: transform 0.5s cubic-bezier(0.4, 0.4, 0.8, 1);
+    -moz-transition: transform 0.5s cubic-bezier(0.4, 0.4, 0.8, 1);
+    -ms-transition: transform 0.5s cubic-bezier(0.4, 0.4, 0.8, 1);
+    -o-transition: transform 0.5s cubic-bezier(0.4, 0.4, 0.8, 1);
+    transition: transform 0.5s cubic-bezier(0.4, 0.4, 0.8, 1);
+
   }
   .stage1 {  background-image: url('../assets/background/stage1.png');  }
   .stage2 {  background-image: url('../assets/background/stage2.png');  }
@@ -132,16 +133,13 @@ export default {
     height: 100%;
     width: 100%;
     left: 100%;
-    /*-webkit-transition: transform 0.5s ease;*/
-    /*-moz-transition: transform 0.5s ease;*/
-    /*-ms-transition: transform 0.5s ease;*/
-    /*-o-transition: transform 0.5s ease;*/
-    /*transition: transform 0.5s ease;*/
-    -webkit-transition: transform 0.5s (0.4, 0.4, 0.8, 1);
-    -moz-transition: transform 0.5s (0.4, 0.4, 0.8, 1);
-    -ms-transition: transform 0.5s (0.4, 0.4, 0.8, 1);
-    -o-transition: transform 0.5s (0.4, 0.4, 0.8, 1);
-    transition: transform 0.5s (0.4, 0.4, 0.8, 1);
+
+    -webkit-transition: transform 0.5s cubic-bezier(0.4, 0.4, 0.8, 1);
+    -moz-transition: transform 0.5s cubic-bezier(0.4, 0.4, 0.8, 1);
+    -ms-transition: transform 0.5s cubic-bezier(0.4, 0.4, 0.8, 1);
+    -o-transition: transform 0.5s cubic-bezier(0.4, 0.4, 0.8, 1);
+    transition: transform 0.5s cubic-bezier(0.4, 0.4, 0.8, 1);
+
   }
 
   .graph svg path {
