@@ -1,14 +1,14 @@
 <template>
   <div class="game-body">
     <div class="graph-container">
-      <div v-bind:class="`background stage${level}`"
-           v-bind:style="{ width: `calc(100% + ${distanceUnit * (graphLength - 1) / 2 + 100}px)`, transform: `translate(${-1 * distanceUnit * timeIndex / 2}px, ${graph[timeIndex] - graph[0]}px)`, transitionDuration: `${timeUnit / 1000 * 0.7 }s`}"></div>
+      <div v-bind:class="`background stage${level}`" class="move-transition"
+           v-bind:style="{ width: `calc(100% + ${distanceUnit * (graphLength - 1) / 2 + 100}px)`, transform: `translate(${-1 * distanceUnit * timeIndex / 2}px, ${graph[timeIndex] - graph[0]}px)`, transitionDuration: `${timeUnit / 1000 * 0.85 }s`}"></div>
       <div class="graph-wrapper">
-        <div class="graph"
+        <div class="graph move-transition"
              :style="{
                 transform: `translate(${-1 * distanceUnit * timeIndex}px, ${(graph[timeIndex] - graph[0]) / amplitude * graphHeight / 2}px)`,
                 top: `calc(50vh - ${graphHeight / 2}px)`,
-                transitionDuration: `${timeUnit / 1000 * 0.7 }s`
+                transitionDuration: `${timeUnit / 1000 * 0.85 }s`
         }">
           <trend
             :data="graph"
@@ -108,12 +108,6 @@ export default {
     z-index: 100;
     top:-25%;
 
-    -webkit-transition: transform 0.5s cubic-bezier(0.4, 0.4, 0.8, 1);
-    -moz-transition: transform 0.5s cubic-bezier(0.4, 0.4, 0.8, 1);
-    -ms-transition: transform 0.5s cubic-bezier(0.4, 0.4, 0.8, 1);
-    -o-transition: transform 0.5s cubic-bezier(0.4, 0.4, 0.8, 1);
-    transition: transform 0.5s cubic-bezier(0.4, 0.4, 0.8, 1);
-
   }
   .stage1 {  background-image: url('../assets/background/stage1.png');  }
   .stage2 {  background-image: url('../assets/background/stage2.png');  }
@@ -133,13 +127,6 @@ export default {
     height: 100%;
     width: 100%;
     left: 100%;
-
-    -webkit-transition: transform 0.5s cubic-bezier(0.4, 0.4, 0.8, 1);
-    -moz-transition: transform 0.5s cubic-bezier(0.4, 0.4, 0.8, 1);
-    -ms-transition: transform 0.5s cubic-bezier(0.4, 0.4, 0.8, 1);
-    -o-transition: transform 0.5s cubic-bezier(0.4, 0.4, 0.8, 1);
-    transition: transform 0.5s cubic-bezier(0.4, 0.4, 0.8, 1);
-
   }
 
   .graph svg path {
@@ -213,6 +200,14 @@ export default {
     position: absolute;
     transform: translate(-50%, -50%);
     z-index: 6002;
+  }
+
+  .move-transition {
+    -webkit-transition: transform 0.5s ease;
+    -moz-transition: transform 0.5s ease;
+    -ms-transition: transform 0.5s ease;
+    -o-transition: transform 0.5s ease;
+    transition: transform 0.5s ease;
   }
 
 </style>
