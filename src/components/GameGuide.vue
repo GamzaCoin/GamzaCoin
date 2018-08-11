@@ -46,7 +46,7 @@ export default {
     width: 100%;
     margin: 0 auto;
   }
-  .img-wrapper{
+  .img-wrapper img{
     width: 100%;
   }
   .check-button {
