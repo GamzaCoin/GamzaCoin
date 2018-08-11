@@ -48,7 +48,7 @@
       <source src="../assets/audio/countdown.ogg" />
     </audio>
     <audio ref=sell_buy_sound>
-      <source src="../assets/audio/countdown.ogg" />
+      <source src="../assets/audio/sellButtonSound.ogg" />
     </audio>
   </div>
 </template>

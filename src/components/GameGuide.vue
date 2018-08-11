@@ -1,7 +1,7 @@
 <template>
   <div v-show="!isGuideChecked" class="guide-container">
     <div class="guide-wrapper">
-      <div class="img-wrapper"></div>
+      <div class="img-wrapper"><img src="../assets/guide.png"></div>
       <button class="check-button" v-on:click="checkGuide">확인</button>
     </div>
   </div>
@@ -34,14 +34,20 @@ export default {
     top: 0;
   }
   .guide-wrapper{
-    width: 300px;
-    margin: 20% auto;
+    width: 100%;
+    margin: 0 auto;
+    position: absolute;
+    top: 47%;
+    right: 0;
+    left: 0;
+    transform: translateY(-50%);
   }
   .img-wrapper{
-    background-image: url('../assets/guide.png');
-    background-size: 300px 400px;
-    width: 300px;
-    height: 400px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .img-wrapper{
+    width: 100%;
   }
   .check-button {
     background: #ff686e;
