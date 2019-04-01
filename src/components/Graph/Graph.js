@@ -89,7 +89,7 @@ class Frame {
           continue;
         //console.log("d:", this.startDirection * Math.pow(-1, i + 1),this.slumpRatio, tempHeight[i], tempHeight[i-1]);
         if(this.startDirection * Math.pow(-1, i + 1) < 0 && this.slumpRatio < Math.abs(tempHeight[i] - tempHeight[i - 1])) {
-          console.log("funck");
+          // console.log("funck");
           continue;
         }
         difficulty += (this.framePoint[i].x - this.framePoint[i - 1].x) * (tempHeight[i] - tempHeight[i - 1]);
@@ -97,7 +97,7 @@ class Frame {
       }
 
       if(limit-- < 0) {
-        console.log('initFramePointY fail');
+        // console.log('initFramePointY fail');
         break;
       }
       /*
@@ -119,7 +119,7 @@ class Frame {
         }
       }
       */
-      console.log('do while', difficulty);
+      // console.log('do while', difficulty);
     } while(difficulty < this.difficultyRange[0] || this.difficultyRange[1] < difficulty);
 
     for(let i in tempHeight)
@@ -141,7 +141,7 @@ class Noise {
   }
 
   makeNoise() {
-    console.log(this, this.numberOfNoisePoint);
+    // console.log(this, this.numberOfNoisePoint);
     let noise = new Array(this.numberOfNoisePoint);
     let i;
     let bestScore = 0;
@@ -158,7 +158,7 @@ class Noise {
       bestScore = this.getBestScore(noise);
 
       if(limit-- < 0) {
-        console.log('makeNoise fail');
+        // console.log('makeNoise fail');
         break;
       }
     } while(this.scoreRange[0] > bestScore || bestScore > this.scoreRange[1]);
